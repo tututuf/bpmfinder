@@ -1,12 +1,12 @@
 # Terms of Service page
 
-`/terms` adapts the supplied Waffo subscription template (V1), with 16 numbered sections, version 1.0 and an effective/updated date of November 1, 2026. The source template was supplied by the user and checked against `https://docs.waffo.ai/mor/account-reviews/tos.md`.
+`/terms` adapts the supplied Waffo subscription template (V1), with 16 numbered sections, version 1.1 and an effective/updated date of November 1, 2026. The source template was supplied by the user and checked against `https://docs.waffo.ai/mor/account-reviews/tos.md`.
 
 ## Confirmed choices
 
 - The user explicitly requested that legal operator name, registered address and operating/registration country not be displayed. The page uses BPM Finder and the existing support mailbox. It does not invent an entity, address, jurisdiction, phone number or arbitration forum. This differs from the provider template's identification checklist; the page does not claim to satisfy all merchant-review or jurisdiction-specific disclosure requirements.
 - First paid subscription: a full refund may be requested within seven calendar days of the first charge, for monthly or yearly plans, without a usage quota. It does not reset on renewal or repeat purchase.
-- Additional remedies cover confirmed duplicate/incorrect charges, a verified interruption on our side exceeding 72 consecutive hours and mandatory legal refund rights. Billing/refund requests use `support@bpmfder.com`; response/processing times are service targets, with payment-provider settlement timing distinguished.
+- Additional remedies cover confirmed duplicate/incorrect charges, a verified major interruption on our side and mandatory legal refund rights. Billing/refund requests use `support@bpmfder.com`; no unconfirmed response or refund-processing deadlines are published; payment-provider settlement timing is distinguished.
 - Cancellation follows the existing signed-in Pricing → Cancel renewal flow. Cancellation stops future renewals and preserves the current paid period. Existing saved snapshots remain accessible after Pro ends.
 
 ## Implementation boundaries
@@ -20,3 +20,7 @@ This change does not enable checkout, create a refund endpoint, send emails, mig
 ## Validation
 
 Type checking and the Cloudflare production build validate the route and imports. Browser verification covers all 16 sections/anchors, fixed desktop/tablet/mobile viewports, sticky contents, client navigation with a persistent header, mobile footer links, pricing and login entry points, sitemap metadata and complete no-JavaScript text. Reports/screenshots are kept locally under ignored `artifacts/terms/`.
+
+## November 1 cleanup
+
+Version 1.1 removes unconfirmed two-business-day support targets, five-to-ten-business-day refund processing targets the unconfirmed 72-hour interruption threshold and the invented 14-day Terms notice period. User-confirmed first-subscription seven-day refund and other existing refund rights remain. No unprovided operator/address/jurisdiction fields are displayed.

@@ -1,6 +1,6 @@
-# Privacy Policy — version 1.0
+# Privacy Policy — version 1.1
 
-Route: `/privacy`. Effective and last updated: November 1, 2026. The 14 sections adapt the user-supplied Waffo privacy template to this application's verified behavior. Reference: https://docs.waffo.ai/mor/account-reviews/privacy-policy.md (retrieved November 1, 2026).
+Route: `/privacy`. Effective and last updated: November 1, 2026. The 12 sections adapt the user-supplied Waffo privacy template to this application's verified behavior. Reference: https://docs.waffo.ai/mor/account-reviews/privacy-policy.md (retrieved November 1, 2026).
 
 ## Scope and evidence
 
@@ -23,4 +23,8 @@ No unsupported certifications, signed transfer contracts, employee agreements, s
 
 The homepage Privacy button now uses a Next Link to the policy; its redundant modal copy is removed while the accuracy dialog remains. Shared resource, Blogs and Pricing footers, login disclosure, pre-checkout pricing note and Terms section 11 link to the policy. Canonical/OG metadata and sitemap include `/privacy` (15 public URLs).
 
-Validation covers type checking, Cloudflare production build, all 14 section links, policy tables, five viewport widths, sticky contents, same-document navigation/header preservation, footer/login/Terms links, no-JavaScript content and live HTTP/canonical/sitemap checks. No actual emails, purchases or privacy requests are sent during validation.
+Validation covers type checking, Cloudflare production build, all 12 section links, policy tables, five viewport widths, sticky contents, same-document navigation/header preservation, footer/login/Terms links, no-JavaScript content and live HTTP/canonical/sitemap checks. No actual emails, purchases or privacy requests are sent during validation.
+
+## November 1 cleanup
+
+At the user's request, remove whole template sections that lack supplied supporting information, rather than displaying blank fields or substitutes. Removed the standalone operator/controller section because no legal identity/address was supplied; removed the unused marketing section and speculative future marketing workflow; removed unsupported transfer-mechanism boilerplate and implementation-absence wording. Remaining sections and contents are renumbered 01–12. Known support contact, actual data practices and privacy rights remain. No legal identity, address, DPO or placeholder fields are rendered. Version 1.1.
