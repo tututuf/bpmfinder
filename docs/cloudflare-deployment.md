@@ -37,3 +37,15 @@ Google must allow `https://bpmfder.com/api/auth/callback/google`. Payments remai
 `scripts/cloudflare-storage-check.mjs` executes in workerd, including password hashing, concurrent code reservations/single-use registration, concurrent checkout reservation, duplicate webhook handling, owner-only results, rollback on idempotency conflict, operation allowlisting and persistence across a runtime restart. It creates isolated local test state under ignored `artifacts/`.
 
 The existing article and SEO browser scripts accept `BASE_URL` to check the Worker. Local reports are under `artifacts/cloudflare-deploy/`. Do not commit `.env.local`, `.data`, `.wrangler`, `.open-next`, private keys, local test accounts or browser artifacts.
+
+## Initial production release — 2026-11-01
+
+Worker version `4ea315a4-3025-4569-9b06-f85ba6326025` is published on the canonical domain and both configured domain bindings. Nine server credentials were uploaded through the secrets helper; checkout remains disabled. The Google credential configuration includes the production callback, and the authorization handoff uses it. A real Google user authorization/consent was not completed during deployment checks.
+
+Validation includes 75 unit tests, type checking, the Cloudflare build, workerd storage concurrency/restart checks, live thirteen-route SEO/tool checks and six-article browser checks at four viewport widths. Live APIs reject invalid credentials and registration codes, require authentication for history, reject unsigned billing webhooks and use secure HttpOnly auth cookies. Real MP3 analysis, free CSV, Pro restrictions, Save Results navigation and persistent-header client navigation were checked on the canonical domain.
+
+Both large R2 assets were fully downloaded from production and their SHA-256 hashes matched the source files. HEAD with identity encoding and leading/trailing byte ranges were also checked. Cloudflare may compress WASM responses and omit Content-Length from compressed HEAD responses. The article scroll test explicitly settles viewport changes before jumping to a heading.
+
+Live commercial inference passed for the supplied MP3, repeat inference, the complete 96-second fixture and intentional model-unavailable handling. The network check distinguishes Cloudflare's JSON performance beacon from upload traffic; no audio upload or unexpected POST occurred. This validates deployment behavior, not real-music key accuracy against a reference corpus.
+
+`npm ci` runs `scripts/prepare-browser-runtime.mjs`, copying the unchanged Transformers.js bundle from the locked package after verifying its manifest hash. The generated minified bundle is excluded from Git because GitHub push protection falsely flagged content in its exports; no push-protection bypass was used. Its deployed bytes match the npm distribution.

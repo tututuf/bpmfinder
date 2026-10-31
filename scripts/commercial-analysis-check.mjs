@@ -12,7 +12,17 @@ const page = await browser.newPage({ viewport: { width: 1440, height: 1050 }, re
 const errors = [], requests = [], workerErrors = [];
 page.on('pageerror', error => errors.push(error.message));
 page.on('worker', w => w.on('console', m => { if (m.type() === 'error') workerErrors.push(m.text()); }));
-page.on('request', r => requests.push({ url: r.url(), method: r.method() }));
+page.on('request', r => {
+  const contentType = r.headers()['content-type'] || '';
+  let performanceBeacon = false;
+  if (r.method() === 'POST' && new URL(r.url()).origin === new URL(base).origin && new URL(r.url()).pathname === '/cdn-cgi/rum' && contentType.includes('application/json')) {
+    try {
+      const payload = JSON.parse(r.postData() || '');
+      performanceBeacon = typeof payload.siteToken === 'string' && typeof payload.pageloadId === 'string' && !/audio|samples|waveform|base64/i.test(Object.keys(payload).join(' '));
+    } catch {}
+  }
+  requests.push({ url: r.url(), method: r.method(), performanceBeacon });
+});
 async function run(buffer, premium = true) {
   return page.evaluate(async ({ bytes, prefix, premium, legacy }) => {
     const context = new AudioContext();
@@ -80,10 +90,11 @@ try {
     assert.equal(failure.moodStatus, 'Unavailable');
     assert.equal(requests.some(r => /\/api\/analysis\/legacy\/|\/vendor\/(?:essentia|tf)|\/models\/(?:musicnn|mood_happy|danceability)\//.test(r.url)), false);
   }
-  assert.equal(requests.some(r => r.method === 'POST' && !r.url.includes('__nextjs')), false);
+  const unexpectedPosts = requests.filter(r => r.method === 'POST' && !r.url.includes('__nextjs') && !r.performanceBeacon);
+  assert.deepEqual(unexpectedPosts.map(r => r.url), [], 'No audio uploads or unexpected POST requests');
   assert.deepEqual(errors, []);
   const summarize = ({ waveform, ...result }) => result;
-  const report = { engine: legacy ? 'legacy' : 'commercial', elapsedSeconds: (Date.now() - started) / 1000, free: summarize(free), actualMp3: summarize(first), repeatIdentical: true, full96Seconds: summarize(full), modelUnavailable: failure ? summarize(failure) : undefined, errors, workerErrors, audioUploads: 0 };
+  const report = { engine: legacy ? 'legacy' : 'commercial', elapsedSeconds: (Date.now() - started) / 1000, free: summarize(free), actualMp3: summarize(first), repeatIdentical: true, full96Seconds: summarize(full), modelUnavailable: failure ? summarize(failure) : undefined, errors, workerErrors, performanceBeacons: requests.filter(r=>r.performanceBeacon).length, audioUploads: 0 };
   await mkdir('artifacts/commercial-analysis', { recursive: true });
   await writeFile(`artifacts/commercial-analysis/${legacy ? 'legacy' : 'commercial'}-report.json`, JSON.stringify(report, null, 2));
   console.log(JSON.stringify(report, null, 2));
