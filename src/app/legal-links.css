@@ -10,3 +10,13 @@
 .footer-links > a:focus-visible,.site-footer > div > a:focus-visible { outline: 2px solid var(--key); outline-offset: 4px; border-radius: 2px; }
 .login-card .login-terms { margin-top: 18px; color: var(--muted); font-size: 11px; line-height: 1.85; }
 .login-terms > a { color: var(--key); text-decoration: underline; text-underline-offset: 3px; }
+.footer-identity,.resource-footer > .footer-identity,.site-footer > .footer-identity { display: grid; gap: 6px; min-width: 0; }
+.footer-contact,.site-footer .footer-contact { display: inline-flex; align-items: center; justify-self: start; gap: 8px; min-height: 32px; color: var(--key); font-size: 11px; line-height: 1.8; }
+.footer-contact > span { overflow-wrap: anywhere; }
+.footer-contact:hover,.site-footer .footer-contact:hover { color: var(--accent); }
+.footer-contact:focus-visible { outline: 2px solid var(--key); outline-offset: 4px; border-radius: 2px; }
+.site-footer > .footer-identity { color: var(--muted); font-size: 10px; line-height: 1.8; }
+.site-footer { flex-wrap: wrap; }
+@media (max-width: 760px) {
+  .site-footer > .footer-identity { order: 3; flex-basis: 100%; margin-left: 0; font-size: 9px; }
+}

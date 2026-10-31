@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import FooterContact from '@/components/footer-contact';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { useSaveWorkspace } from '@/components/save-workspace-provider';
@@ -290,7 +291,7 @@ export default function Analyzer({ configuration }: { configuration: { engine: A
 
       <div className="last-note page-width"><span><Heart size={15} /> Built for people who live a little louder.</span><a href="#workspace" onClick={() => setTool('analyzer')}>Find your next beat <ArrowRight size={15} /></a></div>
     </main>
-    <footer className="site-footer page-width"><a className="brand" href="#" aria-label="BPM Finder home"><Brand /></a><span>© {new Date().getFullYear()} BPM Finder. Made for the love of music.</span><div><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link><button onClick={() => setGuide('A note on accuracy')}>About this tool</button></div></footer>
+    <footer className="site-footer page-width"><a className="brand" href="#" aria-label="BPM Finder home"><Brand /></a><div className="footer-identity"><span>© {new Date().getFullYear()} BPM Finder. Made for the love of music.</span><FooterContact /></div><div><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link><button onClick={() => setGuide('A note on accuracy')}>About this tool</button></div></footer>
 
     {playingTrack && <div className="audio-player"><button className="preview-play" aria-label="Pause playback" onClick={() => { audioRef.current?.pause(); setPlaying(null); }}><Pause size={15} fill="currentColor" /></button><div><strong>{playingTrack.name}</strong><span>Now playing · {playingTrack.bpm} BPM</span></div><input aria-label="Playback position" type="range" min="0" max={playingTrack.duration || 24} step="0.1" value={playTime} onChange={e => { if (audioRef.current) { audioRef.current.currentTime = Number(e.target.value); setPlayTime(Number(e.target.value)); } }} /><span className="mono">{time(playTime)} / {time(playingTrack.duration)}</span><button className="icon-button" aria-label="Close player" onClick={() => { audioRef.current?.pause(); setPlaying(null); }}><X size={16} /></button></div>}
     {inspectedTrack && <TrackInspector premium={hasPro} key={inspectedTrack.id} track={inspectedTrack} onClose={() => setInspecting(null)} onSave={(bpm, key) => { patchTrack(inspectedTrack.id, { bpm, key, camelot: camelotFor(key), bpmEdited: bpm !== (inspectedTrack.originalBpm !== undefined ? inspectedTrack.originalBpm : inspectedTrack.bpm), keyEdited: key !== (inspectedTrack.originalKey ?? inspectedTrack.key) }); setInspecting(null); setNotice('Result updated. Your audio file has not been changed.'); }} onReset={() => patchTrack(inspectedTrack.id, { bpm: inspectedTrack.originalBpm !== undefined ? inspectedTrack.originalBpm : inspectedTrack.bpm, key: inspectedTrack.originalKey || inspectedTrack.key, camelot: inspectedTrack.originalCamelot || inspectedTrack.camelot, bpmEdited: false, keyEdited: false })} />}
