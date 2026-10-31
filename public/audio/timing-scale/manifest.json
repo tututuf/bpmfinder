@@ -1,0 +1,739 @@
+{
+  "generated": "2026-11-01",
+  "generator": "scripts/generate-timing-scale-audio.mjs",
+  "rights": "Original BPM Finder educational audio. You may download and reuse these examples.",
+  "examples": [
+    {
+      "filename": "every-beat.wav",
+      "seconds": 16,
+      "sampleRate": 22050,
+      "channelCount": 1,
+      "bytes": 705644,
+      "sha256": "5d356e1ad7352be4f8639340e1d593b164c696eec61d643bd599dc02d27b3094",
+      "peak": 0.5153473016558953,
+      "kind": "timing",
+      "bpm": 120,
+      "beatsPerBar": 4,
+      "bars": 8,
+      "events": [
+        {
+          "bar": 1,
+          "beat": 1,
+          "startSample": 0,
+          "timeSeconds": 0
+        },
+        {
+          "bar": 1,
+          "beat": 2,
+          "startSample": 11025,
+          "timeSeconds": 0.5
+        },
+        {
+          "bar": 1,
+          "beat": 3,
+          "startSample": 22050,
+          "timeSeconds": 1
+        },
+        {
+          "bar": 1,
+          "beat": 4,
+          "startSample": 33075,
+          "timeSeconds": 1.5
+        },
+        {
+          "bar": 2,
+          "beat": 1,
+          "startSample": 44100,
+          "timeSeconds": 2
+        },
+        {
+          "bar": 2,
+          "beat": 2,
+          "startSample": 55125,
+          "timeSeconds": 2.5
+        },
+        {
+          "bar": 2,
+          "beat": 3,
+          "startSample": 66150,
+          "timeSeconds": 3
+        },
+        {
+          "bar": 2,
+          "beat": 4,
+          "startSample": 77175,
+          "timeSeconds": 3.5
+        },
+        {
+          "bar": 3,
+          "beat": 1,
+          "startSample": 88200,
+          "timeSeconds": 4
+        },
+        {
+          "bar": 3,
+          "beat": 2,
+          "startSample": 99225,
+          "timeSeconds": 4.5
+        },
+        {
+          "bar": 3,
+          "beat": 3,
+          "startSample": 110250,
+          "timeSeconds": 5
+        },
+        {
+          "bar": 3,
+          "beat": 4,
+          "startSample": 121275,
+          "timeSeconds": 5.5
+        },
+        {
+          "bar": 4,
+          "beat": 1,
+          "startSample": 132300,
+          "timeSeconds": 6
+        },
+        {
+          "bar": 4,
+          "beat": 2,
+          "startSample": 143325,
+          "timeSeconds": 6.5
+        },
+        {
+          "bar": 4,
+          "beat": 3,
+          "startSample": 154350,
+          "timeSeconds": 7
+        },
+        {
+          "bar": 4,
+          "beat": 4,
+          "startSample": 165375,
+          "timeSeconds": 7.5
+        },
+        {
+          "bar": 5,
+          "beat": 1,
+          "startSample": 176400,
+          "timeSeconds": 8
+        },
+        {
+          "bar": 5,
+          "beat": 2,
+          "startSample": 187425,
+          "timeSeconds": 8.5
+        },
+        {
+          "bar": 5,
+          "beat": 3,
+          "startSample": 198450,
+          "timeSeconds": 9
+        },
+        {
+          "bar": 5,
+          "beat": 4,
+          "startSample": 209475,
+          "timeSeconds": 9.5
+        },
+        {
+          "bar": 6,
+          "beat": 1,
+          "startSample": 220500,
+          "timeSeconds": 10
+        },
+        {
+          "bar": 6,
+          "beat": 2,
+          "startSample": 231525,
+          "timeSeconds": 10.5
+        },
+        {
+          "bar": 6,
+          "beat": 3,
+          "startSample": 242550,
+          "timeSeconds": 11
+        },
+        {
+          "bar": 6,
+          "beat": 4,
+          "startSample": 253575,
+          "timeSeconds": 11.5
+        },
+        {
+          "bar": 7,
+          "beat": 1,
+          "startSample": 264600,
+          "timeSeconds": 12
+        },
+        {
+          "bar": 7,
+          "beat": 2,
+          "startSample": 275625,
+          "timeSeconds": 12.5
+        },
+        {
+          "bar": 7,
+          "beat": 3,
+          "startSample": 286650,
+          "timeSeconds": 13
+        },
+        {
+          "bar": 7,
+          "beat": 4,
+          "startSample": 297675,
+          "timeSeconds": 13.5
+        },
+        {
+          "bar": 8,
+          "beat": 1,
+          "startSample": 308700,
+          "timeSeconds": 14
+        },
+        {
+          "bar": 8,
+          "beat": 2,
+          "startSample": 319725,
+          "timeSeconds": 14.5
+        },
+        {
+          "bar": 8,
+          "beat": 3,
+          "startSample": 330750,
+          "timeSeconds": 15
+        },
+        {
+          "bar": 8,
+          "beat": 4,
+          "startSample": 341775,
+          "timeSeconds": 15.5
+        }
+      ]
+    },
+    {
+      "filename": "half-clicks.wav",
+      "seconds": 16,
+      "sampleRate": 22050,
+      "channelCount": 1,
+      "bytes": 705644,
+      "sha256": "e5aa7cba006101388e580798eecf74ec3d949491d25cc457714b5048773b77c6",
+      "peak": 0.5153473016558953,
+      "kind": "timing",
+      "bpm": 120,
+      "beatsPerBar": 4,
+      "bars": 8,
+      "events": [
+        {
+          "bar": 1,
+          "beat": 1,
+          "startSample": 0,
+          "timeSeconds": 0
+        },
+        {
+          "bar": 1,
+          "beat": 3,
+          "startSample": 22050,
+          "timeSeconds": 1
+        },
+        {
+          "bar": 2,
+          "beat": 1,
+          "startSample": 44100,
+          "timeSeconds": 2
+        },
+        {
+          "bar": 2,
+          "beat": 3,
+          "startSample": 66150,
+          "timeSeconds": 3
+        },
+        {
+          "bar": 3,
+          "beat": 1,
+          "startSample": 88200,
+          "timeSeconds": 4
+        },
+        {
+          "bar": 3,
+          "beat": 3,
+          "startSample": 110250,
+          "timeSeconds": 5
+        },
+        {
+          "bar": 4,
+          "beat": 1,
+          "startSample": 132300,
+          "timeSeconds": 6
+        },
+        {
+          "bar": 4,
+          "beat": 3,
+          "startSample": 154350,
+          "timeSeconds": 7
+        },
+        {
+          "bar": 5,
+          "beat": 1,
+          "startSample": 176400,
+          "timeSeconds": 8
+        },
+        {
+          "bar": 5,
+          "beat": 3,
+          "startSample": 198450,
+          "timeSeconds": 9
+        },
+        {
+          "bar": 6,
+          "beat": 1,
+          "startSample": 220500,
+          "timeSeconds": 10
+        },
+        {
+          "bar": 6,
+          "beat": 3,
+          "startSample": 242550,
+          "timeSeconds": 11
+        },
+        {
+          "bar": 7,
+          "beat": 1,
+          "startSample": 264600,
+          "timeSeconds": 12
+        },
+        {
+          "bar": 7,
+          "beat": 3,
+          "startSample": 286650,
+          "timeSeconds": 13
+        },
+        {
+          "bar": 8,
+          "beat": 1,
+          "startSample": 308700,
+          "timeSeconds": 14
+        },
+        {
+          "bar": 8,
+          "beat": 3,
+          "startSample": 330750,
+          "timeSeconds": 15
+        }
+      ]
+    },
+    {
+      "filename": "silent-bars.wav",
+      "seconds": 16,
+      "sampleRate": 22050,
+      "channelCount": 1,
+      "bytes": 705644,
+      "sha256": "5e2283a5868d2462b624b7190248a193be564adb5a177d8b40ea359883b5e86d",
+      "peak": 0.5153473016558953,
+      "kind": "timing",
+      "bpm": 120,
+      "beatsPerBar": 4,
+      "bars": 8,
+      "events": [
+        {
+          "bar": 1,
+          "beat": 1,
+          "startSample": 0,
+          "timeSeconds": 0
+        },
+        {
+          "bar": 1,
+          "beat": 2,
+          "startSample": 11025,
+          "timeSeconds": 0.5
+        },
+        {
+          "bar": 1,
+          "beat": 3,
+          "startSample": 22050,
+          "timeSeconds": 1
+        },
+        {
+          "bar": 1,
+          "beat": 4,
+          "startSample": 33075,
+          "timeSeconds": 1.5
+        },
+        {
+          "bar": 2,
+          "beat": 1,
+          "startSample": 44100,
+          "timeSeconds": 2
+        },
+        {
+          "bar": 2,
+          "beat": 2,
+          "startSample": 55125,
+          "timeSeconds": 2.5
+        },
+        {
+          "bar": 2,
+          "beat": 3,
+          "startSample": 66150,
+          "timeSeconds": 3
+        },
+        {
+          "bar": 2,
+          "beat": 4,
+          "startSample": 77175,
+          "timeSeconds": 3.5
+        },
+        {
+          "bar": 4,
+          "beat": 1,
+          "startSample": 132300,
+          "timeSeconds": 6
+        },
+        {
+          "bar": 4,
+          "beat": 2,
+          "startSample": 143325,
+          "timeSeconds": 6.5
+        },
+        {
+          "bar": 4,
+          "beat": 3,
+          "startSample": 154350,
+          "timeSeconds": 7
+        },
+        {
+          "bar": 4,
+          "beat": 4,
+          "startSample": 165375,
+          "timeSeconds": 7.5
+        },
+        {
+          "bar": 5,
+          "beat": 1,
+          "startSample": 176400,
+          "timeSeconds": 8
+        },
+        {
+          "bar": 5,
+          "beat": 2,
+          "startSample": 187425,
+          "timeSeconds": 8.5
+        },
+        {
+          "bar": 5,
+          "beat": 3,
+          "startSample": 198450,
+          "timeSeconds": 9
+        },
+        {
+          "bar": 5,
+          "beat": 4,
+          "startSample": 209475,
+          "timeSeconds": 9.5
+        },
+        {
+          "bar": 6,
+          "beat": 1,
+          "startSample": 220500,
+          "timeSeconds": 10
+        },
+        {
+          "bar": 6,
+          "beat": 2,
+          "startSample": 231525,
+          "timeSeconds": 10.5
+        },
+        {
+          "bar": 6,
+          "beat": 3,
+          "startSample": 242550,
+          "timeSeconds": 11
+        },
+        {
+          "bar": 6,
+          "beat": 4,
+          "startSample": 253575,
+          "timeSeconds": 11.5
+        },
+        {
+          "bar": 8,
+          "beat": 1,
+          "startSample": 308700,
+          "timeSeconds": 14
+        },
+        {
+          "bar": 8,
+          "beat": 2,
+          "startSample": 319725,
+          "timeSeconds": 14.5
+        },
+        {
+          "bar": 8,
+          "beat": 3,
+          "startSample": 330750,
+          "timeSeconds": 15
+        },
+        {
+          "bar": 8,
+          "beat": 4,
+          "startSample": 341775,
+          "timeSeconds": 15.5
+        }
+      ]
+    },
+    {
+      "filename": "center-c-major.wav",
+      "seconds": 16,
+      "sampleRate": 22050,
+      "channelCount": 1,
+      "bytes": 705644,
+      "sha256": "a429dfa45f9b7fd8234fc778631fb1a58c114df15611dbf6527877b282d2e52d",
+      "peak": 0.4343216812182985,
+      "kind": "harmony",
+      "bpm": 120,
+      "intendedCenter": "C major",
+      "chordNames": [
+        "C",
+        "F",
+        "G",
+        "C"
+      ],
+      "sequence": "Four chords, one every two seconds, played twice",
+      "chordMidi": [
+        [
+          48,
+          52,
+          55
+        ],
+        [
+          53,
+          57,
+          60
+        ],
+        [
+          55,
+          59,
+          62
+        ],
+        [
+          48,
+          52,
+          55
+        ]
+      ],
+      "melodyMidi": [
+        72,
+        74,
+        76,
+        79,
+        81,
+        83,
+        79,
+        76,
+        72,
+        74,
+        76,
+        79,
+        81,
+        83,
+        79,
+        76,
+        72,
+        74,
+        76,
+        79,
+        81,
+        83,
+        79,
+        76,
+        72,
+        74,
+        76,
+        79,
+        81,
+        83,
+        79,
+        76
+      ],
+      "pitchClasses": [
+        0,
+        2,
+        4,
+        5,
+        7,
+        9,
+        11
+      ],
+      "tuning": "A4=440 Hz, 12-tone equal temperament"
+    },
+    {
+      "filename": "center-a-minor.wav",
+      "seconds": 16,
+      "sampleRate": 22050,
+      "channelCount": 1,
+      "bytes": 705644,
+      "sha256": "72001293fd65a2f5632cca8db03a66c62c6b3a2c82fcdd5d01398dbd90d5f3a1",
+      "peak": 0.43392942742297275,
+      "kind": "harmony",
+      "bpm": 120,
+      "intendedCenter": "A minor",
+      "chordNames": [
+        "Am",
+        "Dm",
+        "Em",
+        "Am"
+      ],
+      "sequence": "Four chords, one every two seconds, played twice",
+      "chordMidi": [
+        [
+          45,
+          48,
+          52
+        ],
+        [
+          50,
+          53,
+          57
+        ],
+        [
+          52,
+          55,
+          59
+        ],
+        [
+          45,
+          48,
+          52
+        ]
+      ],
+      "melodyMidi": [
+        72,
+        74,
+        76,
+        79,
+        81,
+        83,
+        79,
+        76,
+        72,
+        74,
+        76,
+        79,
+        81,
+        83,
+        79,
+        76,
+        72,
+        74,
+        76,
+        79,
+        81,
+        83,
+        79,
+        76,
+        72,
+        74,
+        76,
+        79,
+        81,
+        83,
+        79,
+        76
+      ],
+      "pitchClasses": [
+        0,
+        2,
+        4,
+        5,
+        7,
+        9,
+        11
+      ],
+      "tuning": "A4=440 Hz, 12-tone equal temperament"
+    },
+    {
+      "filename": "parallel-c-minor.wav",
+      "seconds": 16,
+      "sampleRate": 22050,
+      "channelCount": 1,
+      "bytes": 705644,
+      "sha256": "9d690833a48a4c0cf47ef68589fd61099f4ca795253a196a23184d6d39a84692",
+      "peak": 0.43397902682547257,
+      "kind": "harmony",
+      "bpm": 120,
+      "intendedCenter": "C minor",
+      "chordNames": [
+        "Cm",
+        "Fm",
+        "Gm",
+        "Cm"
+      ],
+      "sequence": "Four chords, one every two seconds, played twice",
+      "chordMidi": [
+        [
+          48,
+          51,
+          55
+        ],
+        [
+          53,
+          56,
+          60
+        ],
+        [
+          55,
+          58,
+          62
+        ],
+        [
+          48,
+          51,
+          55
+        ]
+      ],
+      "melodyMidi": [
+        72,
+        74,
+        75,
+        79,
+        80,
+        82,
+        79,
+        75,
+        72,
+        74,
+        75,
+        79,
+        80,
+        82,
+        79,
+        75,
+        72,
+        74,
+        75,
+        79,
+        80,
+        82,
+        79,
+        75,
+        72,
+        74,
+        75,
+        79,
+        80,
+        82,
+        79,
+        75
+      ],
+      "pitchClasses": [
+        0,
+        2,
+        3,
+        5,
+        7,
+        8,
+        10
+      ],
+      "tuning": "A4=440 Hz, 12-tone equal temperament"
+    }
+  ]
+}

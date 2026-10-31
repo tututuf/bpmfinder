@@ -1,0 +1,18 @@
+BPM Finder original timing and scale examples — November 1, 2026
+Reproduce: node scripts/generate-timing-scale-audio.mjs
+All six files: 16 seconds, mono, 22,050 Hz, 16-bit PCM WAV. No third-party recordings or samples.
+Timing files: underlying quarter-note pulse 120 BPM, eight 4/4 bars, two seconds per bar.
+every-beat: all 32 beats audible. half-clicks: 16 clicks, beats 1 and 3 only; underlying pulse remains 120.
+silent-bars: bars 3 and 7 omitted (4–6s and 12–14s); clicks return on bars 4 and 8 (6s and 14s). Every sample in omitted bars verified zero. These are designed practice exercises, not measured proof of training efficacy.
+Harmony files: two four-bar phrases at 120 BPM, one chord per bar.
+center-c-major: C–F–G–C; center-a-minor: Am–Dm–Em–Am. Exact same 32-note melody in both; both use only pitch classes C D E F G A B. The A-minor example deliberately uses Em, not E major, to keep the shared natural-note collection.
+parallel-c-minor: Cm–Fm–Gm–Cm; the melody lowers E/A/B to E-flat/A-flat/B-flat. Tonic C retained; collection changes.
+Bass/chord context is the controlled difference in the relative pair. Intended centers describe the authored harmony, not observed analyzer outputs or guaranteed listener responses. These clips are not an analyzer benchmark.
+Generator assertions: no clipping, format/duration, read-back hash, click counts/positions, actual silent samples, expected return positions, identical relative-pair melody, equal relative pitch-class sets and correct parallel-minor set.
+SHA-256:
+5d356e1ad7352be4f8639340e1d593b164c696eec61d643bd599dc02d27b3094  every-beat.wav
+e5aa7cba006101388e580798eecf74ec3d949491d25cc457714b5048773b77c6  half-clicks.wav
+5e2283a5868d2462b624b7190248a193be564adb5a177d8b40ea359883b5e86d  silent-bars.wav
+a429dfa45f9b7fd8234fc778631fb1a58c114df15611dbf6527877b282d2e52d  center-c-major.wav
+72001293fd65a2f5632cca8db03a66c62c6b3a2c82fcdd5d01398dbd90d5f3a1  center-a-minor.wav
+9d690833a48a4c0cf47ef68589fd61099f4ca795253a196a23184d6d39a84692  parallel-c-minor.wav

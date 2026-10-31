@@ -1,0 +1,19 @@
+BPM Finder original field-note audio — 2026-10-31
+Reproduce from the project root: node scripts/generate-field-note-audio.mjs
+All audio is original synthesized sine clicks, with no external samples.
+22,050 Hz, 16-bit PCM; sample-rounded click placement error <= 1 sample.
+tempo-60/120/180.wav: 8 seconds mono; one click per stated beat. No subdivisions.
+aligned/fixed-offset/tempo-drift.wav: 16 seconds stereo. Left = 120 BPM, 750 Hz click; right = 120 or 122 BPM, 1150 Hz click.
+Aligned: equal tempo, zero offset. Fixed-offset: equal tempo, right channel 100 ms late.
+Tempo-drift: both start at zero; right 122 BPM vs left 120 BPM.
+The two stereo channels share one file/playback clock. Headphones reveal separation; both click pitches remain audible in mono.
+At 16 seconds the continuous beat-position difference is 16*(122-120)/60 = 0.533333 beats. This is not a count of discrete onsets inside the half-open clip.
+To slow 122 BPM to 120 BPM: (120/122-1)*100 = -1.639344 percent.
+Assertions check event placement, sample format/duration, absence of clipping, fixed-offset equality and arithmetic. These files are timing demonstrations, not analyzer accuracy tests.
+SHA-256:
+69bcb2099cea08251da9590cdaa3a7a463c7792a11373c80753d23c1d31e2a39  tempo-60.wav (8s; 1 channel(s))
+98397b89d634002c94b804b7209ae28fda9c80285b502d85cb95352a79f0a8c6  tempo-120.wav (8s; 1 channel(s))
+1d96a51779471b6ec20f61c5485f9b808134e6d9d440c25aaf1caea2af9b2686  tempo-180.wav (8s; 1 channel(s))
+ab8f522080b7e84fb6884b05bd1d1c79ebc87912fc9f501a0a4794a0570596cc  aligned.wav (16s; 2 channel(s))
+b516d791c290d7a7dd22eebe13cdfa0a44a8977402e8d4e8afbc5252c776f321  fixed-offset.wav (16s; 2 channel(s))
+5aa1810fc989e86faf7ed631c7e9c6e70acef0c3df157fd2a98f8ae2492f3078  tempo-drift.wav (16s; 2 channel(s))

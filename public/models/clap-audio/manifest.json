@@ -1,0 +1,150 @@
+{
+  "engine": "commercial-clap-2",
+  "model": "Xenova/clap-htsat-unfused",
+  "revision": "c28f2883575e590e04d3146ff0713c2448d691ba",
+  "upstream": "laion/clap-htsat-unfused",
+  "upstreamRevision": "8fa0f1c6d0433df6e97c127f64b2a1d6c0dcda8a",
+  "license": "Apache-2.0",
+  "runtime": "@huggingface/transformers@4.3.2 / onnxruntime-web (MIT)",
+  "score": "clap-prompt-pairs-1",
+  "records": [
+    {
+      "file": ".cache/clap-build/Xenova/clap-htsat-unfused/config.json",
+      "source": "https://huggingface.co/Xenova/clap-htsat-unfused/resolve/c28f2883575e590e04d3146ff0713c2448d691ba/config.json",
+      "bytes": 699,
+      "sha256": "39c6d90fe29cf2cce650dd5c92c38a1e35b130d9ce0bb98585222ad687ad979b"
+    },
+    {
+      "file": ".cache/clap-build/Xenova/clap-htsat-unfused/preprocessor_config.json",
+      "source": "https://huggingface.co/Xenova/clap-htsat-unfused/resolve/c28f2883575e590e04d3146ff0713c2448d691ba/preprocessor_config.json",
+      "bytes": 541,
+      "sha256": "9739f58296aa6f9ac18008fd0150fb2649bc554985fbde86d0a4041c882ac753"
+    },
+    {
+      "file": ".cache/clap-build/Xenova/clap-htsat-unfused/tokenizer.json",
+      "source": "https://huggingface.co/Xenova/clap-htsat-unfused/resolve/c28f2883575e590e04d3146ff0713c2448d691ba/tokenizer.json",
+      "bytes": 2108774,
+      "sha256": "dc239041d98de27ffc3975473a1a23e3db4c937b23c138c38bbc66588bd247e5"
+    },
+    {
+      "file": ".cache/clap-build/Xenova/clap-htsat-unfused/tokenizer_config.json",
+      "source": "https://huggingface.co/Xenova/clap-htsat-unfused/resolve/c28f2883575e590e04d3146ff0713c2448d691ba/tokenizer_config.json",
+      "bytes": 1392,
+      "sha256": "2c964a338683aec3695ea37687271e75b40905233f5d2a5bbb9be8cb40c4d0a0"
+    },
+    {
+      "file": ".cache/clap-build/Xenova/clap-htsat-unfused/special_tokens_map.json",
+      "source": "https://huggingface.co/Xenova/clap-htsat-unfused/resolve/c28f2883575e590e04d3146ff0713c2448d691ba/special_tokens_map.json",
+      "bytes": 280,
+      "sha256": "06e405a36dfe4b9604f484f6a1e619af1a7f7d09e34a8555eb0b77b66318067f"
+    },
+    {
+      "file": ".cache/clap-build/Xenova/clap-htsat-unfused/onnx/text_model_quantized.onnx",
+      "source": "https://huggingface.co/Xenova/clap-htsat-unfused/resolve/c28f2883575e590e04d3146ff0713c2448d691ba/onnx/text_model_quantized.onnx",
+      "bytes": 126603263,
+      "sha256": "1a3df8b197e249816e08415fd040434c44762b2eea7eb7bf8a48a0f0bf3c14e5"
+    },
+    {
+      "file": ".cache/clap-build/Xenova/clap-htsat-unfused/onnx/audio_model_quantized.onnx",
+      "source": "https://huggingface.co/Xenova/clap-htsat-unfused/resolve/c28f2883575e590e04d3146ff0713c2448d691ba/onnx/audio_model_quantized.onnx",
+      "bytes": 34301667,
+      "sha256": "3fcff2c8824e7bcb83a983f2a49edab3b60cbcf4872ac70efee517355173bd1f"
+    },
+    {
+      "file": "public/models/clap-audio/config.json",
+      "source": "https://huggingface.co/Xenova/clap-htsat-unfused/resolve/c28f2883575e590e04d3146ff0713c2448d691ba/config.json",
+      "bytes": 699,
+      "sha256": "39c6d90fe29cf2cce650dd5c92c38a1e35b130d9ce0bb98585222ad687ad979b"
+    },
+    {
+      "file": "public/models/clap-audio/preprocessor_config.json",
+      "source": "https://huggingface.co/Xenova/clap-htsat-unfused/resolve/c28f2883575e590e04d3146ff0713c2448d691ba/preprocessor_config.json",
+      "bytes": 541,
+      "sha256": "9739f58296aa6f9ac18008fd0150fb2649bc554985fbde86d0a4041c882ac753"
+    },
+    {
+      "file": "public/models/clap-audio/onnx/audio_model_quantized.onnx",
+      "source": "https://huggingface.co/Xenova/clap-htsat-unfused/resolve/c28f2883575e590e04d3146ff0713c2448d691ba/onnx/audio_model_quantized.onnx",
+      "bytes": 34301667,
+      "sha256": "3fcff2c8824e7bcb83a983f2a49edab3b60cbcf4872ac70efee517355173bd1f"
+    },
+    {
+      "file": "public/vendor/commercial/transformers.min.js",
+      "source": "npm:@huggingface/transformers/dist/transformers.min.js",
+      "bytes": 587917,
+      "sha256": "8b5a3171f8876bab2b1820a7d65eb87628e3d30bb5ea85b9dd398e76eb34decb"
+    },
+    {
+      "file": "public/vendor/commercial/TRANSFORMERS-LICENSE.txt",
+      "source": "npm:@huggingface/transformers/LICENSE",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "file": "public/vendor/commercial/JINJA-LICENSE.txt",
+      "source": "npm:@huggingface/jinja/LICENSE",
+      "bytes": 1069,
+      "sha256": "d6e7b19451c1b3d1d66353bb4b1274138953b3bfd9ae60c56e77b1f548796982"
+    },
+    {
+      "file": "public/vendor/commercial/TOKENIZERS-LICENSE.txt",
+      "source": "npm:@huggingface/tokenizers/LICENSE",
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "file": "public/vendor/commercial/ort-wasm-simd-threaded.jsep.mjs",
+      "source": "npm:onnxruntime-web/dist/ort-wasm-simd-threaded.jsep.mjs",
+      "bytes": 46851,
+      "sha256": "c2f80e915e9df63289788a99d434d8c4e00e64e9c1f030f4b80b022458dd2c99"
+    },
+    {
+      "file": "public/vendor/commercial/ort-wasm-simd-threaded.jsep.wasm",
+      "source": "npm:onnxruntime-web/dist/ort-wasm-simd-threaded.jsep.wasm",
+      "bytes": 28352885,
+      "sha256": "62ff86b2f2fa3a79eb87a7e4720e8ea9051942bf975f314181bf7dcef2feac06"
+    },
+    {
+      "file": "public/vendor/commercial/ONNX-LICENSE.txt",
+      "source": "https://raw.githubusercontent.com/microsoft/onnxruntime/8d85527a0/LICENSE",
+      "bytes": 1073,
+      "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c"
+    },
+    {
+      "file": "public/vendor/commercial/ONNX-THIRD-PARTY-NOTICES.txt",
+      "source": "https://raw.githubusercontent.com/microsoft/onnxruntime/8d85527a0/ThirdPartyNotices.txt",
+      "bytes": 338088,
+      "sha256": "143764b952fdb1a7c69ce653bfba74a7744d6a8a573bfb73e235fba356c83de3"
+    },
+    {
+      "file": "public/models/clap-audio/UPSTREAM-MODEL-CARD.md",
+      "source": "https://huggingface.co/laion/clap-htsat-unfused/raw/8fa0f1c6d0433df6e97c127f64b2a1d6c0dcda8a/README.md",
+      "bytes": 4454,
+      "sha256": "3542c5c4ce25e7868f2c9c97c16229d876bd8d02049e1e0f4d7675da0e5b5db6"
+    },
+    {
+      "file": "public/models/clap-audio/ONNX-MODEL-CARD.md",
+      "source": "https://huggingface.co/Xenova/clap-htsat-unfused/raw/c28f2883575e590e04d3146ff0713c2448d691ba/README.md",
+      "bytes": 2963,
+      "sha256": "70e3f41aa233307522430cc73f19d4e0e982a7fd7c7799aaf7c1f0dface8388b"
+    },
+    {
+      "file": "public/models/clap-audio/MODEL-LICENSE.txt",
+      "source": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "file": "public/models/clap-audio/CLAP-CODE-LICENSE.txt",
+      "source": "https://raw.githubusercontent.com/LAION-AI/CLAP/main/LICENSE",
+      "bytes": 7048,
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+    },
+    {
+      "file": "public/models/clap-audio/text-embeddings.json",
+      "source": "Generated locally with the pinned CLAP text model; fixed original prompt strings",
+      "bytes": 173170,
+      "sha256": "b95fe1413e491aac731557004436f91a27aa5c0319282c6550d86f7499a44012"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+.site-header .header-inner { position:relative; }
+@media(max-width:540px) {
+  .site-header .nav.open { top:calc(100% - 2px); left:0; right:0; margin-left:0; }
+}

@@ -1,0 +1,132 @@
+/* Keep studio-style details readable at real browsing sizes. */
+.hero h1>span{margin-left:.04em}
+.hero-copy>p,.dropzone>p,.format-line,.upload-bottom>span,.upload-bottom>button,.results-heading p,.track-info>div>span,.results-foot,.benefits p,.section-heading p,.steps p,.faq-intro p,.faq-list details p,.last-note,.site-footer>span,.site-footer>div>button{color:#796f84}
+.key-badge.violet,.camelot-badge.violet{color:#82569f}
+.key-badge.peach,.camelot-badge.peach{color:#92663a}
+.key-badge.blue,.camelot-badge.blue{color:#5377a5}
+.nav a,.nav button{font-size:13px}
+.header-note{font-size:11px}
+.hero-copy>p{font-size:14px;line-height:1.85}
+.hero-checks{font-size:11px}
+.hero .eyebrow{font-size:10px;letter-spacing:1.5px}
+.tool-tabs>button{font-size:12px}
+.local-tag{font-size:10px}
+.dropzone h2{font-size:20px}
+.dropzone>p{font-size:12px}
+.primary-button{font-size:12px}
+.format-line{font-size:10px}
+.upload-bottom>span,.upload-bottom>button{font-size:10px}
+.results-heading h2{font-size:18px}
+.results-heading p{font-size:11px}
+.clear-button,.outline-button{font-size:11px}
+thead{font-size:9px}
+th.track-col>span{font-size:7px}
+.track-info strong{font-size:12px}
+.track-info>div>span{font-size:10px}
+.track-info em{font-size:6px}
+.duration-col.mono{font-size:12px}
+.bpm-value{font-size:14px}
+.key-badge{font-size:10px}
+.camelot-badge{font-size:11px}
+.results-foot{font-size:9px}
+.benefits h3{font-size:12px}
+.benefits p{font-size:11px;line-height:1.8}
+.section-heading .eyebrow,.faq-intro .eyebrow{font-size:9px}
+.section-heading p{font-size:12px}
+.steps h3{font-size:13px}
+.steps p{font-size:11px;line-height:1.8}
+.faq-intro p{font-size:12px}
+.faq-list summary{font-size:13px;min-height:54px}
+.faq-list details p{font-size:12px}
+.last-note{font-size:11px}
+.site-footer>span,.site-footer>div>button{font-size:10px}
+.track-status{font-size:11px}
+.error-text{font-size:10px!important}
+.menu-label{font-size:9px!important}
+.track-menu>button{font-size:11px}
+.record-title strong{font-size:13px}
+.record-title>div>span{font-size:8px}
+.record-stats>div>span{font-size:8px}
+.toast{font-size:12px}
+.audio-player strong{font-size:12px}
+.audio-player>div>span{font-size:10px}
+.audio-player>.mono{font-size:10px}
+@media(max-width:1050px){
+  .orbit-two{width:315px;height:200px}
+  .nav a,.nav button{font-size:12px}
+  .hero-copy>p{font-size:12px}
+  .hero .eyebrow{font-size:8px}
+  .hero-checks{font-size:9px;gap:14px}
+  .benefits p{font-size:10px}
+  .benefits h3{font-size:11px}
+  .steps p{font-size:10px}
+  .steps p br{display:none}
+  .site-footer>span,.site-footer>div>button{font-size:9px}
+}
+@media(max-width:760px){
+  .hero-art{display:none}
+  .hero-copy{width:100%;max-width:470px}
+  .nav a,.nav button{font-size:11px}
+  .hero-copy>p{font-size:11px}
+  .hero-checks{font-size:8px;gap:10px}
+  .tool-tabs>button{font-size:11px}
+  .dropzone h2{font-size:18px}
+  .dropzone>p{font-size:11px}
+  .format-line{font-size:9px}
+  .upload-bottom>span,.upload-bottom>button{font-size:8px}
+  .results-heading p{font-size:10px}
+  .results-heading h2{font-size:17px}
+  .outline-button,.clear-button{font-size:10px}
+  .track-info strong{font-size:11px}
+  .track-info>div>span{font-size:9px}
+  .key-badge{font-size:9px}
+  .camelot-badge{font-size:10px}
+  .bpm-value{font-size:13px}
+  .results-foot{font-size:8px}
+  .benefits h3{font-size:11px;line-height:1.6}
+  .benefits p{font-size:10px}
+  .steps h3{font-size:11px}
+  .steps p{font-size:10px}
+  .faq-list summary{font-size:11px}
+  .faq-intro p{font-size:11px}
+  .last-note{font-size:9px}
+  .site-footer>span,.site-footer>div>button{font-size:8px}
+}
+@media(max-width:540px){
+  .hero-copy>p{font-size:13px;max-width:345px;line-height:1.8}
+  .hero .eyebrow{font-size:9px}
+  .hero-checks{font-size:10px;gap:17px}
+  .tool-tabs>button{font-size:10px}
+  .dropzone h2{font-size:16px}
+  .dropzone>p{font-size:10px;line-height:1.7}
+  .dropzone .primary-button{font-size:12px}
+  .format-line{font-size:8px}
+  .upload-bottom>span,.upload-bottom>button{font-size:9px}
+  .results-heading h2{font-size:17px}
+  .results-heading p{font-size:9px;max-width:175px}
+  .outline-button,.clear-button{font-size:8px}
+  thead{font-size:7px;letter-spacing:.2px}
+  .track-info strong{font-size:10px;max-width:113px}
+  .track-info>div>span{font-size:8px;max-width:113px}
+  .track-info em{font-size:5px;display:inline-block}
+  .key-badge{font-size:8px;padding:4px 5px}
+  .camelot-badge{font-size:9px;padding:4px 3px}
+  .bpm-value{font-size:12px}
+  .results-foot{font-size:8px;line-height:1.7}
+  .benefits h3{font-size:13px}
+  .benefits p{font-size:11px}
+  .section-heading p{font-size:11px;line-height:1.8}
+  .steps h3{font-size:13px}
+  .steps p{font-size:11px}
+  .faq-intro .eyebrow{font-size:8px}
+  .faq-intro h2 br{display:initial}
+  .faq-intro p{font-size:12px}
+  .faq-list summary{font-size:12px}
+  .faq-list details p{font-size:12px}
+  .last-note{font-size:9px;gap:13px}
+  .site-footer>span,.site-footer>div>button{font-size:9px}
+  .audio-player strong{font-size:10px}
+  .audio-player>div>span,.audio-player>.mono{font-size:8px}
+  .tool-intro p{font-size:12px}
+  .tool-intro h2{font-size:22px}
+}

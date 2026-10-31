@@ -1,0 +1,15 @@
+const originalBlogPosts = [
+  { slug: 'fast-and-slow-tempo', title: 'Fast & Slow Tempo: BPM and Music Tempo Terms Explained', category: 'TEMPO & TIMING', mark: '60 / 180', description: 'Hear the same pulse at three speeds, read Italian tempo markings and learn how to count the beat.', deck: 'From a slow pulse to a quick one: hear the difference, read the directions and put a number to the pace.', detail: 'Tempo chart · three listening examples' },
+  { slug: 'average-song-tempo', title: 'Average Song Tempo: Typical BPM by Genre', category: 'TEMPO & GENRE', mark: 'BPM ≠ GENRE', description: 'Compare sourced tempo ranges, understand half-time and calculate a useful average for your own playlist.', deck: 'A genre chart is a starting point. A useful average needs a defined set of songs and a consistent way of counting.', detail: 'Sourced genre chart · worked calculation' },
+  { slug: 'key-notation', title: 'Key Notation: How to Read Musical Keys and Key Signatures', category: 'MUSICAL KEY', mark: 'F♯ / G♭', description: 'Read major and minor key names, follow sharps and flats and use a complete key signature reference chart.', deck: 'Read the label, decode the signature and connect the notation to the music you actually hear.', detail: '15 key signatures · annotated score example' },
+  { slug: 'dj-beatmatching', title: 'DJ Beatmatching: How to Match Two Tracks by Ear', category: 'DJ TECHNIQUE', mark: '120 ↔ 122', description: 'Match tempo and beat alignment by ear. Practice with original audio that separates a fixed offset from tempo drift.', deck: 'Two tracks, one steady pulse. Learn what to listen for and which control fixes the problem you hear.', detail: 'Step-by-step practice · three listening examples' },
+] as const;
+
+export const newBlogPosts = [
+  ...originalBlogPosts.map(post => ({ ...post, published: '2026-10-31' } as const)),
+  { slug: 'timing-in-music', title: 'How to Improve Your Timing in Music: Practical Metronome Exercises', category: 'RHYTHM PRACTICE', mark: '1 · 2 · — · 4', description: 'Practice steady timing with beat counting, subdivisions, fewer clicks and a silent-bar exercise. Hear original examples and learn how to review a recording.', deck: 'Keep the pulse when the click gets quieter, sparser or disappears. A practical routine you can hear, repeat and check.', detail: 'Five exercises · three practice tracks', published: '2026-11-01' },
+  { slug: 'musical-key-and-scale', title: 'Key vs Scale: What’s the Difference in Music?', category: 'HARMONY BASICS', mark: 'SAME NOTES?', description: 'Understand the difference between a musical key and a scale. Compare relative and parallel keys with original listening examples, diagrams and cited explanations.', deck: 'A list of notes tells you what is available. Listen to the phrase to hear which note and chord feel like home.', detail: 'Relative & parallel keys · three listening examples', published: '2026-11-01' },
+] as const;
+
+export type BlogSlug = typeof newBlogPosts[number]['slug'];
+export function blogPost(slug: BlogSlug) { return newBlogPosts.find(post => post.slug === slug)!; }

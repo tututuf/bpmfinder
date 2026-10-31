@@ -1,0 +1,51 @@
+BPM Finder — default local analysis credits and licenses
+
+Default engine: commercial-clap-2
+Original project DSP performs BPM, pitch-class/key and signal-level analysis.
+No Essentia/MTG runtime or model assets are loaded by the default engine.
+
+CLAP (Contrastive Language-Audio Pretraining)
+Authors: Yusong Wu, Ke Chen, Tianyu Zhang, Yuchen Hui,
+Taylor Berg-Kirkpatrick, Shlomo Dubnov, LAION-AI and contributors.
+Model: laion/clap-htsat-unfused, upstream model-card license Apache-2.0.
+Upstream revision: 8fa0f1c6d0433df6e97c127f64b2a1d6c0dcda8a
+https://huggingface.co/laion/clap-htsat-unfused
+ONNX/q8 conversion: Xenova/clap-htsat-unfused
+Conversion revision: c28f2883575e590e04d3146ff0713c2448d691ba
+https://huggingface.co/Xenova/clap-htsat-unfused
+Weight license text: /models/clap-audio/MODEL-LICENSE.txt
+The separate LAION source repository uses CC0 (not the weight-card license).
+Its original text is retained as /models/clap-audio/CLAP-CODE-LICENSE.txt.
+Original cards: /models/clap-audio/UPSTREAM-MODEL-CARD.md and
+/models/clap-audio/ONNX-MODEL-CARD.md
+Sources, SHA-256 hashes and versions: /models/clap-audio/manifest.json
+ONNX model weights are unmodified. Fixed text embeddings and prompt-pair
+aggregation are project additions; policy clap-prompt-pairs-1.
+
+Transformers.js 4.3.2 — Hugging Face and contributors, Apache-2.0.
+License: /vendor/commercial/TRANSFORMERS-LICENSE.txt
+HF Tokenizers — Apache-2.0; HF Jinja — MIT.
+Licenses: /vendor/commercial/TOKENIZERS-LICENSE.txt and JINJA-LICENSE.txt
+ONNX Runtime Web — Microsoft Corporation and contributors, MIT.
+Version: 1.31.0-dev.20260914-8d85527a0
+License: /vendor/commercial/ONNX-LICENSE.txt
+Additional notices: /vendor/commercial/ONNX-THIRD-PARTY-NOTICES.txt
+
+Result meanings
+BPM/key: full-recording onset/chroma estimates; confirm by ear.
+Key retains its best-ranked profile when related keys are close; broad noise
+and near-uniform pitch distributions supply no key. Resonant percussion can
+yield an approximate pitch-profile candidate without a composed tonal center.
+Camelot is derived from the selected key. DSP policy version: dsp-3.
+Energy: RMS level mapped from -60..0 dBFS to 0..100, not musical intensity.
+Dance/Happy: relative CLAP audio/text similarity to balanced description
+ensembles, sigmoid temperature 0.07. These are custom zero-shot match scores,
+not calibrated class probabilities or scores from another service.
+CLAP analyzes 10-second windows through the complete recording, with
+remaining-duration weighting for the overlapping last window. Short audio is
+repeat-padded deterministically. Silent windows provide no mood evidence.
+No arbitrary mood fallback is inferred from BPM, loudness or key.
+
+Audio/results remain in browser memory. Model/runtime cache contains no audio.
+The separate legacy backup is disabled by default and is not covered by the
+licenses of this default engine. Its original restrictions remain applicable.

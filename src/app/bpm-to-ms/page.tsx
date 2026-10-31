@@ -1,0 +1,19 @@
+import Link from 'next/link';
+import TempoCalculator from '@/components/tempo-calculator';
+import { ToolPage, RelatedTools, ResourceFooter, Questions } from '@/components/tool-page';
+import StructuredData from '@/components/structured-data';
+import { applicationSchema, pageMetadata } from '@/lib/site';
+export const metadata = pageMetadata('/bpm-to-ms', 'BPM to ms Calculator — Delay & Note Values', 'Convert BPM to milliseconds, seconds and beats per second. Calculate straight, dotted and triplet note lengths, or convert quarter-note milliseconds back to BPM.');
+export default function BpmToMsPage() {
+  return <><StructuredData value={applicationSchema('/bpm-to-ms', 'BPM to ms Calculator', 'Convert musical tempo to note durations and quarter-note milliseconds back to BPM.', ['BPM to milliseconds', 'Milliseconds to BPM', 'Dotted and triplet note times', 'BPM to BPS'])} /><ToolPage eyebrow="GET YOUR DELAYS IN TIME" title="BPM to ms" accent="Every note. On time." description="Turn tempo into milliseconds for delays, echoes and rhythmic effects. Find straight, dotted or triplet note lengths, or work backwards from time to BPM.">
+    <TempoCalculator />
+    <section className="resource-copy page-width"><div className="resource-heading"><span className="eyebrow">FROM TEMPO TO TIME</span><h2>How the conversion works</h2></div><div className="resource-columns"><article><h3>One beat, in milliseconds.</h3><p>This calculator treats the BPM beat as a quarter note. Divide 60,000 by BPM to get its duration in milliseconds. At 120 BPM, a quarter note lasts 500 ms, an eighth note 250 ms and a sixteenth note 125 ms.</p><code>Quarter note ms = 60,000 / BPM</code></article><article><h3>Dotted notes and triplets.</h3><p>A dotted note lasts one and a half times its straight value. A triplet note lasts two thirds of that value: three fit into the time of two straight notes. At 120 BPM, a dotted eighth is 375 ms and an eighth-note triplet is about 166.667 ms.</p><code>Dotted × 1.5 · Triplet × ⅔</code></article><article><h3>Go from time back to tempo.</h3><p>Choose ms → BPM and enter the duration of a quarter note. A 500 ms quarter note means 120 BPM. For beats per second, divide BPM by 60; 120 BPM is 2 BPS. The table updates as you type.</p><code>BPM = 60,000 / quarter note ms</code></article></div></section>
+    <section className="resource-callout page-width"><div><span className="eyebrow">SET UP YOUR EFFECT</span><h2>Find the tempo. Pick the feel.</h2><p>First <Link href="/">measure your audio’s BPM</Link> or <Link href="/tap-tempo">tap along with the beat</Link>. Enter that tempo here, choose a note length, and copy the milliseconds into your delay’s time control. Use dotted or triplet timing when that rhythm suits the part.</p></div></section>
+    <Questions title="A little detail on timing." items={[
+      ['Does this change the tempo of my audio?', 'No. This calculator converts numbers and note durations. Editing a BPM result or calculating a delay time does not stretch, retune or export an audio file.'],
+      ['What does the millisecond input represent?', 'It is the length of one quarter note, not a full bar and not the selected dotted or triplet value. This keeps the inverse BPM conversion unambiguous.'],
+      ['Can I use decimal BPM values?', 'Yes. Values from 1 to 1,000 BPM are supported, including decimals. The table rounds its display to three decimal places; calculations use the unrounded tempo.'],
+      ['Does the time signature affect this calculation?', 'A note duration depends on tempo and the note value used as the beat. This tool uses a quarter-note beat. A meter marking alone does not change the quarter-note duration. If your tempo marking uses another note value, convert that pulse to quarter-note BPM first.'],
+    ]} /><RelatedTools current="/bpm-to-ms" />
+  </ToolPage><ResourceFooter /></>;
+}

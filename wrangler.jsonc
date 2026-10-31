@@ -1,0 +1,39 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "bpmfinder",
+  "account_id": "1bcfeb9d1cc33c72b9a161be421dc6d5",
+  "main": "cloudflare/worker.ts",
+  "compatibility_date": "2026-10-30",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "workers_dev": true,
+  "preview_urls": true,
+  "routes": [
+    { "pattern": "bpmfder.com", "custom_domain": true },
+    { "pattern": "www.bpmfder.com", "custom_domain": true }
+  ],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS",
+    "run_worker_first": ["/models/clap-audio/onnx/*", "/vendor/commercial/*.wasm"]
+  },
+  "services": [{ "binding": "WORKER_SELF_REFERENCE", "service": "bpmfinder" }],
+  "r2_buckets": [
+    { "binding": "NEXT_INC_CACHE_R2_BUCKET", "bucket_name": "bpmfinder-cache" },
+    { "binding": "ANALYSIS_ASSETS", "bucket_name": "bpmfinder-assets" }
+  ],
+  "durable_objects": { "bindings": [{ "name": "APP_DATABASE", "class_name": "AppDatabase" }] },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["AppDatabase"] }],
+  "images": { "binding": "IMAGES" },
+  "vars": {
+    "STORAGE_BACKEND": "cloudflare",
+    "SITE_URL": "https://bpmfder.com",
+    "NEXTAUTH_URL": "https://bpmfder.com",
+    "AUTH_TRUSTED_IP_HEADER": "cf-connecting-ip",
+    "ANALYSIS_ENGINE": "commercial",
+    "RESEND_FROM": "BPM Finder <support@bpmfder.com>",
+    "WAFFO_ENVIRONMENT": "prod",
+    "WAFFO_BILLING_ENABLED": "false"
+  },
+  "observability": { "enabled": true }
+}
+

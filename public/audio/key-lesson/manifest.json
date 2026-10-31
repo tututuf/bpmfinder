@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "created": "2026-10-31",
+  "generator": "scripts/generate-key-lesson.mjs",
+  "sampleRate": 22050,
+  "encoding": "mono 16-bit PCM WAV",
+  "durationSeconds": 16,
+  "tempoBpm": 120,
+  "tuning": "A4 = 440 Hz, 12-tone equal temperament",
+  "rights": "Original BPM Finder teaching examples. You may download and reuse these audio examples.",
+  "description": "Synthesized chords and bass, with a short root pulse on each beat. Chord labels describe the composition; they are not inferred detector results.",
+  "examples": [
+    {
+      "id": "c-major",
+      "intendedKey": "C major",
+      "camelot": "8B",
+      "names": [
+        "C",
+        "F",
+        "G",
+        "C"
+      ],
+      "chords": [
+        [
+          48,
+          52,
+          55
+        ],
+        [
+          53,
+          57,
+          60
+        ],
+        [
+          55,
+          59,
+          62
+        ],
+        [
+          48,
+          52,
+          55
+        ]
+      ],
+      "filename": "c-major-lesson.wav",
+      "sha256": "77cfcf626c94336889b8c634e6dc41cc2eb37690be948ffb72e64c3631935006",
+      "bytes": 705644
+    },
+    {
+      "id": "a-minor",
+      "intendedKey": "A minor",
+      "camelot": "8A",
+      "names": [
+        "Am",
+        "Dm",
+        "E",
+        "Am"
+      ],
+      "chords": [
+        [
+          45,
+          48,
+          52
+        ],
+        [
+          50,
+          53,
+          57
+        ],
+        [
+          52,
+          56,
+          59
+        ],
+        [
+          45,
+          48,
+          52
+        ]
+      ],
+      "filename": "a-minor-lesson.wav",
+      "sha256": "973c85859742cf19b13fd201884a3993123fc4c5d89f2bc745fd5923ac013acf",
+      "bytes": 705644
+    }
+  ]
+}
