@@ -20,7 +20,6 @@
 .price-card ul { display:grid; gap:15px; padding:25px 0 0; margin:24px 0 0; border-top:1px solid var(--line); list-style:none; }
 .price-card li { display:flex; gap:9px; font-size:10px; color:var(--muted); line-height:1.8; }
 .price-card li>svg { flex:none; margin-top:2px; color:var(--accent); }
-.plan-provider { display:flex; align-items:center; justify-content:center; gap:6px; margin-top:auto; padding-top:25px; font-size:9px; color:var(--subtle); }
 .yearly-price-card { background:var(--ink); color:var(--canvas); border-color:var(--ink); --line:#14141426; --muted:#55524d; --subtle:#55524d; --accent:#a63830; }
 .yearly-price-card .price-card-label>span:last-child { color:#141414; border-color:#c9b867; background:#eed77b; }
 .yearly-price-card .price-currency { color:#141414; }

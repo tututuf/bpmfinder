@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { useSession } from 'next-auth/react';
-import { ArrowRight, Check, LoaderCircle, LockKeyhole } from 'lucide-react';
+import { ArrowRight, Check, LoaderCircle } from 'lucide-react';
 import { BILLING_PLANS, type BillingPlan } from '@/lib/billing-plans';
 import { useBilling } from './billing-provider';
 
@@ -45,7 +45,7 @@ export default function PricingPlans() {
       {(Object.keys(BILLING_PLANS) as BillingPlan[]).map(id => { const item = BILLING_PLANS[id]; return <article key={id} className={`price-card pro-price-card ${id === 'yearly' ? 'yearly-price-card' : ''}`}>
         <div className="price-card-label"><span>THE PRO EDITION</span><span>{id === 'yearly' ? 'BEST VALUE' : 'PRO'}</span></div><h2>{item.name}</h2><p className="price-card-description">A closer listen. A fuller picture.</p><div className="plan-price"><span className="price-currency">$</span><strong>{item.monthlyAmount}</strong><span>/ month</span></div><p className="plan-billing">{id === 'yearly' ? <>Billed yearly at <strong>$35.88</strong></> : <>Billed monthly. Cancel renewal anytime.</>}</p>
         {status === 'unauthenticated' ? <Link className={`plan-select ${id === 'yearly' ? 'primary-button' : 'outline-button'}`} href="/login?callbackUrl=%2Fpricing">Sign in to upgrade <ArrowRight size={16} /></Link> : <button className={`plan-select ${id === 'yearly' ? 'primary-button' : 'outline-button'}`} disabled={loading || !!busy || hasSubscription || !checkoutAvailable} onClick={() => checkout(id)}>{busy === id ? <><LoaderCircle size={16} className="spin" />Opening checkout…</> : hasPro ? 'Pro is active' : hasSubscription ? 'Manage subscription above' : loading ? 'Checking availability…' : !checkoutAvailable ? 'Payments coming soon' : <>Choose {item.name.toLowerCase()} <ArrowRight size={16} /></>}</button>}
-        <ul><li><Check size={14} />Everything in Free</li><li><Check size={14} />Energy score</li><li><Check size={14} />Danceability & happiness scores</li><li><Check size={14} />Save Results to your account</li></ul><p className="plan-provider"><LockKeyhole size={11} /> Payments by Waffo Pancake</p>
+        <ul><li><Check size={14} />Everything in Free</li><li><Check size={14} />Energy score</li><li><Check size={14} />Danceability & happiness scores</li><li><Check size={14} />Save Results to your account</li></ul>
       </article>; })}
     </section>
     {!loading && !checkoutAvailable && !hasSubscription && <p className="billing-availability">Pro plans are coming soon. The free BPM & key tools are available now.</p>}
