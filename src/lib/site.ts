@@ -7,7 +7,7 @@ export function siteOrigin() {
   if (!['http:', 'https:'].includes(value.protocol) || value.username || value.password) throw new Error('SITE_URL must be an HTTP(S) site origin.');
   return value.origin;
 }
-export const publicPages = ['/', '/tap-tempo', '/camelot-wheel', '/bpm-to-ms', '/blogs', '/blogs/how-to-find-key-of-a-song', ...newBlogPosts.map(post => `/blogs/${post.slug}` as const), '/pricing'] as const;
+export const publicPages = ['/', '/tap-tempo', '/camelot-wheel', '/bpm-to-ms', '/blogs', '/blogs/how-to-find-key-of-a-song', ...newBlogPosts.map(post => `/blogs/${post.slug}` as const), '/pricing', '/terms'] as const;
 export function absoluteUrl(path: string) { return new URL(path, siteOrigin()).href; }
 export function pageMetadata(path: string, title: string, description: string, article = false): Metadata {
   return { title, description, alternates: { canonical: path },

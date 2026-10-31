@@ -14,7 +14,7 @@ export function RelatedTools({ current }: { current: string }) {
   return <section className="related-tools page-width" aria-labelledby="related-tools-title"><div className="resource-heading"><span className="eyebrow">KEEP THE MUSIC MOVING</span><h2 id="related-tools-title">A few more tools for your set.</h2></div><div className="related-tools-grid">{toolLinks.filter(t => t.href !== current).map(t => <Link href={t.href} key={t.href}><h3>{t.title}<ArrowRight size={17} aria-hidden="true" /></h3><p>{t.text}</p></Link>)}</div></section>;
 }
 export function ResourceFooter() {
-  return <footer className="resource-footer page-width"><span>BPM Finder. Made for the love of music.</span><div><Link href="/">BPM Finder</Link><Link href="/blogs">Field notes</Link><Link href="/pricing">Free & Pro</Link></div></footer>;
+  return <footer className="resource-footer page-width"><span>BPM Finder. Made for the love of music.</span><div><Link href="/">BPM Finder</Link><Link href="/blogs">Field notes</Link><Link href="/pricing">Free & Pro</Link><Link href="/terms">Terms</Link></div></footer>;
 }
 export function ToolPage({ eyebrow, title, accent, description, children }: { eyebrow: string; title: string; accent: string; description: string; children: ReactNode }) {
   const path = toolLinks.find(tool => tool.title === title)?.href;

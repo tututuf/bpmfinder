@@ -17,6 +17,7 @@ import './homepage.css';
 import './auth.css';
 import './resources.css';
 import './workspace.css';
+import './legal-links.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteOrigin()),

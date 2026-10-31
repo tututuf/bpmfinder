@@ -1,0 +1,12 @@
+.footer-links { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 24px; }
+.footer-links > a { display: inline-flex; align-items: center; gap: 8px; min-height: 32px; }
+.footer-links > a:hover { color: var(--accent); }
+.footer-links > a:last-child { color: var(--accent); }
+.resource-footer > div,.site-footer > div { flex-wrap: wrap; }
+.site-footer > div > a { display: inline-flex; align-items: center; font-size: 10px; color: var(--muted); min-height: 36px; }
+.site-footer > div > a:hover { color: var(--accent); }
+.pricing-tax-note a { color: var(--key); text-decoration: underline; text-underline-offset: 3px; }
+.pricing-tax-note a:hover { color: var(--accent); }
+.footer-links > a:focus-visible,.site-footer > div > a:focus-visible { outline: 2px solid var(--key); outline-offset: 4px; border-radius: 2px; }
+.login-card .login-terms { margin-top: 18px; color: var(--muted); font-size: 11px; line-height: 1.85; }
+.login-terms > a { color: var(--key); text-decoration: underline; text-underline-offset: 3px; }
