@@ -49,7 +49,7 @@ export default function PricingPlans() {
       </article>; })}
     </section>
     {!loading && !checkoutAvailable && !hasSubscription && <p className="billing-availability">Pro plans are coming soon. The free BPM & key tools are available now.</p>}
-    <p className="pricing-tax-note">Prices in USD. Any applicable taxes are shown at checkout. Monthly and yearly plans renew automatically until canceled. Read our <Link href="/terms#billing">subscription terms</Link>, <Link href="/terms#cancellation">cancellation policy</Link> and <Link href="/terms#refunds">7-day refund policy</Link> before subscribing.</p>
+    <p className="pricing-tax-note">Prices in USD. Any applicable taxes are shown at checkout. Monthly and yearly plans renew automatically until canceled. Read our <Link href="/terms#billing">subscription terms</Link>, <Link href="/terms#cancellation">cancellation policy</Link> and <Link href="/terms#refunds">7-day refund policy</Link> before subscribing. See our <Link href="/privacy">Privacy Policy</Link> for account and payment data.</p>
     {error && <p className="billing-message billing-error" role="alert">{error}</p>}
     {message && <p className="billing-message" role="status">{message}</p>}
   </>;

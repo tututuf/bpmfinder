@@ -11,7 +11,7 @@
 
 ## Implementation boundaries
 
-The page describes browser analysis and local CLAP inference, account information, Resend email delivery, Google authentication, Cloudflare hosting/performance processing and Waffo payments. It does not promise automatic cancellation-confirmation emails, annual renewal reminders, a 90-day purge or a separate `/privacy` page that do not exist. Section 11 provides the data-handling information within these Terms. Open-source license rights are preserved.
+The page describes browser analysis and local CLAP inference, account information, Resend email delivery, Google authentication, Cloudflare hosting/performance processing and Waffo payments. It does not promise automatic cancellation-confirmation emails, annual renewal reminders, a 90-day purge. Section 11 summarizes data handling and links to the separate `/privacy` policy, added on November 1, 2026. Open-source license rights are preserved.
 
 Footer links were added on the homepage, shared resource pages, Blogs and Pricing; login links to the Terms beside the sign-in flows. Pricing links directly to billing, cancellation and refunds and includes a matching refund FAQ. The sitemap and canonical metadata include `/terms`. The pricing-card payment-provider badge remains removed; naming the processor within legal terms is a separate disclosure.
 

@@ -141,9 +141,9 @@ try {
   }
   await nojs.close();
   const sitemap=await (await page.request.get(base+'/sitemap.xml')).text();
-  assert.equal([...sitemap.matchAll(/<loc>/g)].length,14);
+  assert.equal([...sitemap.matchAll(/<loc>/g)].length,15);
   for(const slug of routes)assert.ok(sitemap.includes('https://bpmfder.com/blogs/'+slug));
   assert.deepEqual(report.errors,[]);
-  report.checks.push('Unique canonical/metadata/BlogPosting, correct per-post publication dates and inline-to-bibliography evidence mapping','Four widths: centered body, no figure/table/player overflow; desktop outside-margin sticky contents and active source link','All twelve audio assets have matching SHA256 and format/duration; native playback/no preload and actual WAV downloads work','New metronome screenshot opens a dialog and closes with Escape; eight-bar schedule and three scale rows remain in HTML','Persistent-header same-document new/old article navigation, seven blog entries, fourteen public sitemap URLs; removed homepage-guides section stays absent','Full article text, inline contents, diagrams and sources remain available with JavaScript disabled');
+  report.checks.push('Unique canonical/metadata/BlogPosting, correct per-post publication dates and inline-to-bibliography evidence mapping','Four widths: centered body, no figure/table/player overflow; desktop outside-margin sticky contents and active source link','All twelve audio assets have matching SHA256 and format/duration; native playback/no preload and actual WAV downloads work','New metronome screenshot opens a dialog and closes with Escape; eight-bar schedule and three scale rows remain in HTML','Persistent-header same-document new/old article navigation, seven blog entries, fifteen public sitemap URLs; removed homepage-guides section stays absent','Full article text, inline contents, diagrams and sources remain available with JavaScript disabled');
   await writeFile(output+'/report.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));
 }finally{await browser.close();}

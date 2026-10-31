@@ -1,0 +1,10 @@
+.privacy-table-wrap { margin-top: 19px; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.privacy-table { width: 100%; min-width: 0; table-layout: fixed; border-collapse: collapse; text-align: left; }
+.privacy-table caption { padding: 16px 18px; background: var(--surface); text-align: left; color: var(--subtle); font: 10px/1.7 var(--mono); }
+.privacy-table th,.privacy-table td { width: auto; padding: 15px 18px; border: 0; border-top: 1px solid var(--line); white-space: normal; overflow-wrap: anywhere; vertical-align: top; font-size: 12px; line-height: 1.9; }
+.privacy-table thead th { color: var(--key); font-weight: 500; background: var(--surface); }
+.privacy-table th:first-child { width: 36%; }
+.privacy-table tbody th { color: var(--ink); font-weight: 500; }
+.privacy-table td { color: var(--muted); }
+.privacy-table tbody tr:hover { background: transparent; }
+@media (max-width: 760px) { .privacy-table th,.privacy-table td { padding: 13px 12px; font-size: 11px; } .privacy-table caption { padding: 13px 12px; } .privacy-table th:first-child { width: 38%; } }

@@ -8,7 +8,7 @@ const output = process.env.CHECK_OUTPUT || 'artifacts/seo-first-batch';
 await mkdir(output, { recursive: true });
 const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH || 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe', headless:true });
 const report = { base, routes:[], interactions:[], screenshots:[], errors:[] };
-const routes = ['/', '/tap-tempo','/camelot-wheel','/bpm-to-ms','/blogs','/blogs/how-to-find-key-of-a-song','/blogs/fast-and-slow-tempo','/blogs/average-song-tempo','/blogs/key-notation','/blogs/dj-beatmatching','/blogs/timing-in-music','/blogs/musical-key-and-scale','/pricing','/terms'];
+const routes = ['/', '/tap-tempo','/camelot-wheel','/bpm-to-ms','/blogs','/blogs/how-to-find-key-of-a-song','/blogs/fast-and-slow-tempo','/blogs/average-song-tempo','/blogs/key-notation','/blogs/dj-beatmatching','/blogs/timing-in-music','/blogs/musical-key-and-scale','/pricing','/terms','/privacy'];
 try {
   const context = await browser.newContext({ viewport:{width:1440,height:1000}, acceptDownloads:true, reducedMotion:'reduce' });
   const page = await context.newPage();
