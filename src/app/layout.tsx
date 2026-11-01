@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import SiteMotion from '@/components/site-motion';
 import AuthProvider from '@/components/auth-provider';
 import SiteHeader from '@/components/content-header';
@@ -28,5 +29,8 @@ export const metadata: Metadata = {
   openGraph: { title: 'BPM Finder — Find Song BPM & Musical Key Online, Free', description: 'Analyze the tempo and key of your audio files in your browser. Free BPM detection, Tap Tempo and a metronome. Your audio stays on your device.', type: 'website' },
 };
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return <html lang="en" data-scroll-behavior="smooth"><body><AuthProvider><SiteHeader /><SiteMotion>{children}</SiteMotion></AuthProvider></body></html>;
+  return <html lang="en" data-scroll-behavior="smooth"><body><AuthProvider><SiteHeader /><SiteMotion>{children}</SiteMotion></AuthProvider>{process.env.NODE_ENV === 'production' && <><Script src="https://www.googletagmanager.com/gtag/js?id=G-Z0FT82KR6V" strategy="afterInteractive" /><Script id="google-analytics" strategy="afterInteractive">{`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-Z0FT82KR6V');`}</Script></>}</body></html>;
 }
