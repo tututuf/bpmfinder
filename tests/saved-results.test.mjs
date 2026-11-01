@@ -52,6 +52,8 @@ test('history cursors paginate equal timestamps without exposing another account
     const store = new SavedResultsStore(db), tracks = snapshotTracks([track()]);
     for (let i = 0; i < 25; i++) { store.save('alice', randomUUID(), tracks, 1000); store.save('bob', randomUUID(), tracks, 1000); }
     const first = store.list('alice'), second = store.list('alice', Number(first.nextCursor));
+    const rpcArgs = JSON.parse(JSON.stringify(['alice', undefined]));
+    assert.deepEqual(store.list(...rpcArgs), first, 'JSON RPC null cursor returns the first page');
     assert.equal(first.results.length, 20); assert.equal(second.results.length, 5); assert.equal(second.nextCursor, null);
     assert.equal(new Set([...first.results, ...second.results].map(x => x.id)).size, 25);
     assert.equal(store.list('bob').results.some(x => first.results.some(y => y.id === x.id)), false);

@@ -8,7 +8,7 @@ export async function GET(request: Request) {
     const identity = await resultIdentity();
     const cursor = new URL(request.url).searchParams.get('before');
     if (cursor !== null && (!/^\d+$/.test(cursor) || !Number.isSafeInteger(Number(cursor)) || Number(cursor) <= 0)) throw new SavedResultError('Invalid result page.');
-    return accountResponse(await savedResults().list(identity, cursor ? Number(cursor) : undefined));
+    return accountResponse(cursor ? await savedResults().list(identity, Number(cursor)) : await savedResults().list(identity));
   } catch (error) { return resultFailure(error); }
 }
 export async function POST(request: Request) {

@@ -23,8 +23,10 @@ export class SavedResultsStore {
     if (row.tracks_json !== json) throw new SavedResultError('This save request has changed. Please try again.', 409);
     return summary(row);
   }
-  list(identity: string, before = Number.MAX_SAFE_INTEGER) {
-    const rows = this.db.prepare('SELECT sequence,id,saved_at,track_count,preview FROM saved_results WHERE identity=? AND sequence<? ORDER BY sequence DESC LIMIT 21').all(identity, before) as Row[];
+  list(identity: string, before?: number | null) {
+    // JSON RPC converts an explicit undefined array argument to null.
+    const boundary = before ?? Number.MAX_SAFE_INTEGER;
+    const rows = this.db.prepare('SELECT sequence,id,saved_at,track_count,preview FROM saved_results WHERE identity=? AND sequence<? ORDER BY sequence DESC LIMIT 21').all(identity, boundary) as Row[];
     return { results: rows.slice(0, 20).map(summary), nextCursor: rows.length > 20 ? String(rows[19].sequence) : null };
   }
   get(identity: string, id: string): SavedResult | null {

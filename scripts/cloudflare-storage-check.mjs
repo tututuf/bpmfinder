@@ -48,6 +48,7 @@ try {
   assert.equal((await call('results', 'get', ['bob', saved.id])).value, null);
   assert.equal((await call('results', 'save', ['alice', requestId, [{ name: 'Changed.wav' }], now])).status, 409);
   assert.equal((await call('results', 'list', ['alice'])).value.results.length, 1);
+  assert.equal((await call('results', 'list', ['alice', undefined])).value.results.length, 1, 'An omitted cursor serialized as null must return saved records');
   await runtime.dispose();
   runtime = new Miniflare(options); namespace = await runtime.getDurableObjectNamespace('APP_DATABASE'); stub = namespace.get(namespace.idFromString(idText));
   assert.equal((await call('accounts', 'account', [email])).value.password_hash, 'salted');
