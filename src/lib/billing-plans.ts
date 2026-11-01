@@ -4,7 +4,7 @@ export const BILLING_PLANS = {
 } as const;
 export type BillingPlan = keyof typeof BILLING_PLANS;
 export function isBillingPlan(value: unknown): value is BillingPlan { return value === 'monthly' || value === 'yearly'; }
-export type BillingStatus = { hasPro: boolean; plan: BillingPlan | null; state: string; expiresAt: number | null; checkoutAvailable: boolean; developmentSavingUnlocked?: boolean };
+export type BillingStatus = { hasPro: boolean; plan: BillingPlan | null; state: string; expiresAt: number | null; checkoutAvailable: boolean; testMode?: boolean; developmentSavingUnlocked?: boolean };
 export const FREE_BILLING_STATUS: BillingStatus = { hasPro: false, plan: null, state: 'free', expiresAt: null, checkoutAvailable: false };
 // Development saving can be tested without a subscription; analysis insights always require Pro.
 export function developmentSavingAccess(runtime: string | undefined) { return runtime === 'development'; }

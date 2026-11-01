@@ -16,7 +16,7 @@ Audio and unsaved results remain in browser memory. Authenticated Pro users can 
 
 Client-local analysis is not DRM: downloadable JavaScript/model files can be inspected or modified by a technically capable person. This implements application subscription access, not secrecy for public analysis algorithms. Enforcing model access against modified clients would require a different delivery/execution architecture.
 
-## Current provider setup (2026-10-30)
+## Current provider setup (2026-11-01)
 
 The supplied private key successfully authenticated against the explicitly selected merchant/store. Both products were created and published, and their IDs saved to ignored `.env.local`:
 
@@ -27,9 +27,9 @@ The supplied private key successfully authenticated against the explicitly selec
 | Monthly product | `PROD_3E3QxhVi6iQ0vVbTXTX06j` |
 | Yearly product | `PROD_01aq44EkjwaYpBqKYm4yz7` |
 
-The provider reports `prodEnabled: false`, `payinEnable: true`. Production collection therefore still needs store activation through Waffo. No checkout, order, card authorization or payment was created by this implementation/verification.
+The provider reports `prodEnabled: true`, `payinEnable: true`. Both configured products are active and published with the prices above. Checkout is enabled in `wrangler.jsonc` in test mode. The existing key opens a checkout explicitly labeled test mode; a separate live key is required for real collection. No card authorization or payment was submitted during this release verification.
 
-The local site runs at `http://localhost:3000`. No public webhook has been registered: Waffo cannot deliver production events to localhost. Deploy the application and register the reachable HTTPS callback before enabling sales.
+The test webhook is registered at `https://bpmfder.com/api/billing/webhook` for subscription lifecycle and successful refund events (`testMode: true`). Registration verified that unsigned requests return HTTP 401. Local development remains separate from this production collection setting.
 
 ## Environment
 
@@ -50,7 +50,7 @@ COMMERCIAL_ANALYSIS_LICENSE_CONFIRMED=false
 
 The private key can contain real or escaped newlines; the official SDK normalizes it. The API key determines the merchant API's environment. Setting `WAFFO_ENVIRONMENT=test` alone does not turn a production key into a test key. Use the matching test/prod key, products and callback subscription.
 
-Default analysis now uses original DSP and the Apache-2.0 CLAP model; see `docs/commercial-analysis.md` for licenses, provenance and score semantics. The former Essentia/MTG assets remain an isolated explicit backup outside `public/`. `COMMERCIAL_ANALYSIS_LICENSE_CONFIRMED` is required only for production legacy analysis, not the default engine. It records permissions already obtained and does not grant them. `WAFFO_BILLING_ENABLED` remains false: provider production activation and a public callback still need to be ready before sales.
+Default analysis now uses original DSP and the Apache-2.0 CLAP model; see `docs/commercial-analysis.md` for licenses, provenance and score semantics. The former Essentia/MTG assets remain an isolated explicit backup outside `public/`. `COMMERCIAL_ANALYSIS_LICENSE_CONFIRMED` is required only for production legacy analysis, not the default engine. It records permissions already obtained and does not grant them. `WAFFO_BILLING_ENABLED=true` in the Cloudflare deployment opens checkout in the configured environment; keep it false in environments that should not accept payments.
 
 `NEXTAUTH_URL` must be the canonical deployed HTTPS origin. It controls Origin validation and the checkout success URL. Continue using the existing Google callback and email-auth configuration documented alongside this file.
 
@@ -91,7 +91,7 @@ Cancellation validates the authenticated identity and derives the order from the
 
 ## Deployment and persistence
 
-The current implementation shares the durable SQLite account database (`AUTH_DATABASE_PATH`, default `.data/accounts.sqlite`). Keep it on persistent disk, back it up and run one application instance against that local database. Do not deploy this unchanged to ephemeral serverless storage or multiple independent disks. Migrate account/billing/inbox transactions to a shared database before that deployment model.
+Production uses `STORAGE_BACKEND=cloudflare` and the `APP_DATABASE` Durable Object to persist accounts, billing and webhook inbox records. Local development uses the SQLite account database (`AUTH_DATABASE_PATH`, default `.data/accounts.sqlite`); keep that file on persistent disk when using the local backend.
 
 Each login provider has a stable separate opaque billing identity. Matching Google/email addresses do not automatically merge subscriptions. Use the same sign-in method/account used for purchase. Sessions created before this integration need one fresh sign-in to acquire the identity.
 

@@ -31,8 +31,8 @@
     "AUTH_TRUSTED_IP_HEADER": "cf-connecting-ip",
     "ANALYSIS_ENGINE": "commercial",
     "RESEND_FROM": "BPM Finder <support@bpmfder.com>",
-    "WAFFO_ENVIRONMENT": "prod",
-    "WAFFO_BILLING_ENABLED": "false"
+    "WAFFO_ENVIRONMENT": "test",
+    "WAFFO_BILLING_ENABLED": "true"
   },
   "observability": { "enabled": true }
 }

@@ -8,7 +8,7 @@ import { useBilling } from './billing-provider';
 
 export default function PricingPlans() {
   const { status } = useSession();
-  const { hasPro, plan, state, expiresAt, checkoutAvailable, loading, refresh, developmentSavingUnlocked } = useBilling();
+  const { hasPro, plan, state, expiresAt, checkoutAvailable, testMode, loading, refresh, developmentSavingUnlocked } = useBilling();
   const [busy, setBusy] = useState<BillingPlan | 'cancel' | null>(null);
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
@@ -37,6 +37,7 @@ export default function PricingPlans() {
   }
   const date = expiresAt ? new Date(expiresAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' }) : '';
   return <>
+    {testMode && checkoutAvailable && <div className="subscription-summary" role="status"><div><span className="pro-label">TEST PAYMENTS</span><h2>Test checkout is open.</h2><p>Payments are simulated. No real charges are made. Test subscriptions are separate from live subscriptions.</p></div></div>}
     {developmentSavingUnlocked && <div className="subscription-summary" role="status"><div><span className="pro-label">DEVELOPMENT ACCESS</span><h2>Save Results is unlocked for testing.</h2><p>Sign in to test Save Results in development. Energy, Dance and Happy require an active Pro subscription. CSV export is free on every plan.</p></div><Link className="outline-button" href="/#workspace">Open the tools <ArrowRight size={15} /></Link></div>}
     {hasSubscription && <div className="subscription-summary" role="status"><div><span className="pro-label">YOUR SUBSCRIPTION</span><h2>Pro · {plan === 'yearly' ? 'Yearly' : 'Monthly'}</h2><p>{state === 'past_due' ? 'Your renewal payment is overdue. Pro access is paused.' : state === 'canceling' ? (hasPro ? `Renewal canceled. Pro ends on ${date}.` : 'Renewal canceled. Your paid period has ended.') : hasPro ? `Your current paid period ends on ${date}.` : 'Your current paid period has ended. Waiting for renewal confirmation.'}</p></div>{state !== 'canceling' && <button className="text-button" onClick={() => setConfirmCancel(true)} disabled={!!busy}>Cancel renewal</button>}</div>}
     {confirmCancel && <div className="cancel-confirm"><p>Cancel automatic renewal?{hasPro ? ` Your Pro access stays active until ${date}.` : ' No further renewals will be scheduled.'}</p><div><button className="outline-button" disabled={!!busy} onClick={() => setConfirmCancel(false)}>Keep subscription</button><button className="primary-button" disabled={!!busy} onClick={cancel}>{busy === 'cancel' ? 'Canceling…' : 'Cancel renewal'}</button></div></div>}

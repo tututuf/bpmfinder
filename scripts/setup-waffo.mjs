@@ -75,8 +75,10 @@ if (args.has('--webhook')) {
     if (events.some(e => !existing.events.includes(e))) throw new Error('Existing webhook is missing subscription/refund events; update it in the dashboard.');
     console.log(JSON.stringify({ webhook: 'already-registered', id: existing.id }));
   } else {
-    const result = await client.webhooks.add({ storeId, channel: 'http', url: callback.href, events, testMode: mode === 'test' }, { idempotencyKey: key(`webhook/${callback.href}/v1`) });
-    console.log(JSON.stringify({ webhook: 'registered', id: result.webhook?.id }));
+    const result = await client.webhooks.add({ storeId, channel: 'http', url: callback.href, events, testMode: mode === 'test' }, { idempotencyKey: key(`webhook/${callback.href}/v2`) });
+    const registered = (await catalog()).store.storeWebhooks.find(h => h.url === callback.href && h.testMode === (mode === 'test'));
+    if (!registered || events.some(e => !registered.events.includes(e))) throw new Error('Webhook creation was acknowledged but the expected callback is absent from the store.');
+    console.log(JSON.stringify({ webhook: 'registered-and-verified', id: registered.id }));
   }
 }
 console.log(JSON.stringify({ configured: Object.keys(ids), salesFlagsUnchanged: true, checkoutCreated: false }));
