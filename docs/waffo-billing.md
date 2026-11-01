@@ -27,9 +27,9 @@ The supplied private key successfully authenticated against the explicitly selec
 | Monthly product | `PROD_3E3QxhVi6iQ0vVbTXTX06j` |
 | Yearly product | `PROD_01aq44EkjwaYpBqKYm4yz7` |
 
-The provider reports `prodEnabled: true`, `payinEnable: true`. Both configured products are active and published with the prices above. Checkout is enabled in `wrangler.jsonc` in test mode. The existing key opens a checkout explicitly labeled test mode; a separate live key is required for real collection. No card authorization or payment was submitted during this release verification.
+The provider reports `prodEnabled: true`, `payinEnable: true`. Both configured products are active and published with the prices above. Checkout is enabled in `wrangler.jsonc` in production mode using the live private key supplied on November 1, 2026. The previous test key is retained only in ignored local configuration. No real card authorization or payment was submitted during this release verification.
 
-The test webhook is registered at `https://bpmfder.com/api/billing/webhook` for subscription lifecycle and successful refund events (`testMode: true`). Registration verified that unsigned requests return HTTP 401. Local development remains separate from this production collection setting.
+The production webhook is registered at `https://bpmfder.com/api/billing/webhook` for subscription lifecycle and successful refund events (`testMode: false`). The callback was confirmed through the production API. Unsigned requests return HTTP 401. Test-mode events are rejected while the application is in production mode. Pricing displays its test notice only when the server reports test mode.
 
 ## Environment
 
