@@ -3,7 +3,8 @@ import GoogleAnalytics from '@/components/google-analytics';
 import SiteMotion from '@/components/site-motion';
 import AuthProvider from '@/components/auth-provider';
 import SiteHeader from '@/components/content-header';
-import { siteOrigin } from '@/lib/site';
+import { siteOrigin, siteIdentitySchema } from '@/lib/site';
+import StructuredData from '@/components/structured-data';
 import '@fontsource/plus-jakarta-sans/400.css';
 import '@fontsource/plus-jakarta-sans/500.css';
 import '@fontsource/plus-jakarta-sans/600.css';
@@ -29,5 +30,5 @@ export const metadata: Metadata = {
   openGraph: { title: 'BPM Finder — Find Song BPM & Musical Key Online, Free', description: 'Analyze the tempo and key of your audio files in your browser. Free BPM detection, Tap Tempo and a metronome. Your audio stays on your device.', type: 'website' },
 };
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return <html lang="en" data-scroll-behavior="smooth"><body><AuthProvider><SiteHeader /><SiteMotion>{children}</SiteMotion></AuthProvider>{process.env.NODE_ENV === 'production' && <GoogleAnalytics />}</body></html>;
+  return <html lang="en" data-scroll-behavior="smooth"><body><StructuredData value={siteIdentitySchema()} /><AuthProvider><SiteHeader /><SiteMotion>{children}</SiteMotion></AuthProvider>{process.env.NODE_ENV === 'production' && <GoogleAnalytics />}</body></html>;
 }

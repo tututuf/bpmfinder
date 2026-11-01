@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import FooterContact from '@/components/footer-contact';
+import SiteInformationLinks from '@/components/site-information-links';
 import { ArrowRight, ChevronDown, ShieldCheck, FileAudio, Layers } from 'lucide-react';
 import PricingPlans from '@/components/pricing-plans';
 import { pageMetadata } from '@/lib/site';
@@ -24,5 +25,5 @@ export default function Pricing() {
     <div className="pricing-limits"><span><FileAudio size={14} /> Up to 50 MB · 10 min per file</span><span><Layers size={14} /> 20 files per batch · both plans</span></div>
     <div className="pricing-privacy"><ShieldCheck size={20} /><p><strong>Your tracks stay with you.</strong> Audio analysis runs on your device, right in your browser.</p></div>
     <section className="pricing-faq" aria-labelledby="pricing-faq-heading"><div><span className="eyebrow">A FEW PRACTICAL DETAILS</span><h2 id="pricing-faq-heading">Good to know<br /> before you press play.</h2></div><div className="pricing-questions">{questions.map(([question, answer]) => <details key={question}><summary>{question}<ChevronDown size={17} aria-hidden="true" /></summary><p>{answer}</p></details>)}</div></section>
-  </main><footer className="pricing-footer page-width"><div className="footer-identity"><span>BPM Finder. Made for the love of music.</span><FooterContact /></div><div className="footer-links"><Link href="/terms">Terms</Link><Link href="/privacy">Privacy</Link><Link href="/">Back to home <ArrowRight size={14} /></Link></div></footer></>;
+  </main><footer className="pricing-footer page-width"><div className="footer-identity"><span>BPM Finder. Made for the love of music.</span><FooterContact /></div><div className="footer-links"><SiteInformationLinks /><Link href="/terms">Terms</Link><Link href="/privacy">Privacy</Link><Link href="/">Back to home <ArrowRight size={14} /></Link></div></footer></>;
 }

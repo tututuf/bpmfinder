@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import FooterContact from '@/components/footer-contact';
+import SiteInformationLinks from '@/components/site-information-links';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { useSaveWorkspace } from '@/components/save-workspace-provider';
@@ -236,7 +237,7 @@ export default function Analyzer({ configuration }: { configuration: { engine: A
       <section className="hero page-width">
         <div className="hero-copy"><div className="eyebrow"><span /> FREE ONLINE BPM & KEY FINDER</div>
           <h1>BPM Finder.<br />Know your <span>music.</span></h1>
-          <p>Find song BPM, musical key and Camelot from your audio files. Analyze a track, check the tempo and export your results to CSV for free.</p>
+          <p>BPM Finder estimates song BPM, musical key and Camelot from your audio files, right in your browser. Your audio stays on your device. Analyze a track and export your results to CSV for free.</p>
           <div className="hero-checks"><span><Check /> Free to use</span><span><Check /> No sign-up</span><span><Check /> Just your browser</span></div>
         </div>
         <HeroArtwork>
@@ -291,7 +292,7 @@ export default function Analyzer({ configuration }: { configuration: { engine: A
 
       <div className="last-note page-width"><span><Heart size={15} /> Built for people who live a little louder.</span><a href="#workspace" onClick={() => setTool('analyzer')}>Find your next beat <ArrowRight size={15} /></a></div>
     </main>
-    <footer className="site-footer page-width"><a className="brand" href="#" aria-label="BPM Finder home"><Brand /></a><div className="footer-identity"><span>© {new Date().getFullYear()} BPM Finder. Made for the love of music.</span><FooterContact /></div><div><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link><button onClick={() => setGuide('A note on accuracy')}>About this tool</button></div></footer>
+    <footer className="site-footer page-width"><a className="brand" href="#" aria-label="BPM Finder home"><Brand /></a><div className="footer-identity"><span>© {new Date().getFullYear()} BPM Finder. Made for the love of music.</span><FooterContact /></div><div><SiteInformationLinks /><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link><button onClick={() => setGuide('A note on accuracy')}>About this tool</button></div></footer>
 
     {playingTrack && <div className="audio-player"><button className="preview-play" aria-label="Pause playback" onClick={() => { audioRef.current?.pause(); setPlaying(null); }}><Pause size={15} fill="currentColor" /></button><div><strong>{playingTrack.name}</strong><span>Now playing · {playingTrack.bpm} BPM</span></div><input aria-label="Playback position" type="range" min="0" max={playingTrack.duration || 24} step="0.1" value={playTime} onChange={e => { if (audioRef.current) { audioRef.current.currentTime = Number(e.target.value); setPlayTime(Number(e.target.value)); } }} /><span className="mono">{time(playTime)} / {time(playingTrack.duration)}</span><button className="icon-button" aria-label="Close player" onClick={() => { audioRef.current?.pause(); setPlaying(null); }}><X size={16} /></button></div>}
     {inspectedTrack && <TrackInspector premium={hasPro} key={inspectedTrack.id} track={inspectedTrack} onClose={() => setInspecting(null)} onSave={(bpm, key) => { patchTrack(inspectedTrack.id, { bpm, key, camelot: camelotFor(key), bpmEdited: bpm !== (inspectedTrack.originalBpm !== undefined ? inspectedTrack.originalBpm : inspectedTrack.bpm), keyEdited: key !== (inspectedTrack.originalKey ?? inspectedTrack.key) }); setInspecting(null); setNotice('Result updated. Your audio file has not been changed.'); }} onReset={() => patchTrack(inspectedTrack.id, { bpm: inspectedTrack.originalBpm !== undefined ? inspectedTrack.originalBpm : inspectedTrack.bpm, key: inspectedTrack.originalKey || inspectedTrack.key, camelot: inspectedTrack.originalCamelot || inspectedTrack.camelot, bpmEdited: false, keyEdited: false })} />}

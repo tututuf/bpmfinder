@@ -7,6 +7,7 @@
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
   "workers_dev": true,
   "preview_urls": true,
+  "dev": { "host": "127.0.0.1" },
   "routes": [
     { "pattern": "bpmfder.com", "custom_domain": true },
     { "pattern": "www.bpmfder.com", "custom_domain": true }
@@ -15,7 +16,7 @@
     "directory": ".open-next/assets",
     "binding": "ASSETS",
     "html_handling": "none",
-    "run_worker_first": ["/models/clap-audio/onnx/*", "/vendor/commercial/*.wasm"]
+    "run_worker_first": true
   },
   "services": [{ "binding": "WORKER_SELF_REFERENCE", "service": "bpmfinder" }],
   "r2_buckets": [

@@ -26,6 +26,8 @@ node scripts/deploy-cloudflare.mjs
 
 Production is assigned to `bpmfder.com` and `www.bpmfder.com`; the latter redirects to the canonical origin. The fallback Worker address is `https://bpmfinder.qq2429263683.workers.dev`. OAuth and registration are configured for the canonical domain.
 
+The Worker also upgrades HTTP requests on the production hosts with a 308 before serving pages, static assets or R2 files. Static assets use `run_worker_first: true` so they receive the same canonicalization; OpenNext's asset resolver handles their normal responses. `dev.host` explicitly uses `127.0.0.1` so Wrangler does not forward local preview requests under the production hostname. See `docs/geo-implementation.md` for checks and the account-dependent indexing steps.
+
 ## Secrets
 
 `node scripts/cloudflare-secrets.mjs` reads the allowlisted server credentials from ignored `.env.local` and sends them to Wrangler over stdin. Values are never printed or saved to a temporary file. It excludes local origin, database path and billing-enable overrides. Cloudflare's public runtime variables are in `wrangler.jsonc`; the production canonical/auth origin is `https://bpmfder.com`.

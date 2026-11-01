@@ -2,6 +2,7 @@
 import type { R2Bucket, ExecutionContext, Headers as WorkerHeaders } from '@cloudflare/workers-types';
 // @ts-ignore OpenNext is generated during the Cloudflare build.
 import nextWorker from '../.open-next/worker.js';
+import { canonicalRedirectUrl } from './canonical';
 export { AppDatabase } from './database';
 // @ts-ignore Generated OpenNext Durable Object exports.
 export { DOQueueHandler, DOShardedTagCache, BucketCachePurge } from '../.open-next/worker.js';
@@ -11,7 +12,9 @@ const largeAssets = new Map([
   ['/vendor/commercial/ort-wasm-simd-threaded.jsep.wasm', 'application/wasm'],
 ]);
 export default {
-  async fetch(request: Request, env: { ANALYSIS_ASSETS: R2Bucket }, ctx: ExecutionContext) {
+  async fetch(request: Request, env: { ANALYSIS_ASSETS: R2Bucket; SITE_URL?: string }, ctx: ExecutionContext) {
+    const canonical = canonicalRedirectUrl(request.url, env.SITE_URL);
+    if (canonical) return Response.redirect(canonical, 308);
     const path = new URL(request.url).pathname;
     if (largeAssets.has(path)) {
       if (!['GET', 'HEAD'].includes(request.method)) return new Response('Method not allowed', { status: 405 });

@@ -8,7 +8,7 @@ const output = process.env.CHECK_OUTPUT || 'artifacts/seo-first-batch';
 await mkdir(output, { recursive: true });
 const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH || 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe', headless:true });
 const report = { base, routes:[], interactions:[], screenshots:[], errors:[] };
-const routes = ['/', '/tap-tempo','/camelot-wheel','/bpm-to-ms','/blogs','/blogs/how-to-find-key-of-a-song','/blogs/fast-and-slow-tempo','/blogs/average-song-tempo','/blogs/key-notation','/blogs/dj-beatmatching','/blogs/timing-in-music','/blogs/musical-key-and-scale','/pricing','/terms','/privacy'];
+const routes = ['/', '/tap-tempo','/camelot-wheel','/bpm-to-ms','/blogs','/blogs/how-to-find-key-of-a-song','/blogs/fast-and-slow-tempo','/blogs/average-song-tempo','/blogs/key-notation','/blogs/dj-beatmatching','/blogs/timing-in-music','/blogs/musical-key-and-scale','/about','/analysis-methodology','/pricing','/terms','/privacy'];
 try {
   const context = await browser.newContext({ viewport:{width:1440,height:1000}, acceptDownloads:true, reducedMotion:'reduce' });
   const page = await context.newPage();
@@ -26,7 +26,10 @@ try {
     assert.ok((await page.locator('meta[name=description]').getAttribute('content')).length > 50);
     assert.match(await page.locator('meta[property="og:image"]').getAttribute('content'), /bpm-finder-social\.png$/);
     assert.ok(!/noindex/.test(await page.locator('meta[name=robots]').getAttribute('content')));
-    for (const raw of await page.locator('script[type="application/ld+json"]').allTextContents()) assert.ok(JSON.parse(raw)['@type']);
+    for (const raw of await page.locator('script[type="application/ld+json"]').allTextContents()) {
+      const schema = JSON.parse(raw);
+      assert.ok(schema['@type'] || (schema['@graph']?.length && schema['@graph'].every(node => node['@type'] && node['@id'])));
+    }
     assert.equal(await page.locator('select').count(), 0, 'Custom selects only');
     assert.equal(await page.locator('a[href^="/key-finder"]').count(),0,'No links to discontinued key page');
     report.routes.push({path,title,canonical});

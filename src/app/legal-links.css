@@ -3,6 +3,11 @@
 .footer-links > a:hover { color: var(--accent); }
 .footer-links > a:last-child { color: var(--accent); }
 .resource-footer > div,.site-footer > div { flex-wrap: wrap; }
+.resource-footer > div:last-child,.blogs-footer > .footer-links,.pricing-footer > .footer-links { justify-content: flex-end; }
+.resource-footer > .footer-identity,.blogs-footer > .footer-identity,.pricing-footer > .footer-identity { flex: 0 0 260px; }
+.article-byline a,.blog-card-byline a { color: var(--key); text-decoration: underline; text-underline-offset: 3px; }
+.article-byline a:hover,.blog-card-byline a:hover { color: var(--accent); }
+.article-byline a:focus-visible,.blog-card-byline a:focus-visible { outline: 2px solid var(--key); outline-offset: 4px; }
 .site-footer > div > a { display: inline-flex; align-items: center; font-size: 10px; color: var(--muted); min-height: 36px; }
 .site-footer > div > a:hover { color: var(--accent); }
 .pricing-tax-note a { color: var(--key); text-decoration: underline; text-underline-offset: 3px; }
@@ -18,5 +23,7 @@
 .site-footer > .footer-identity { color: var(--muted); font-size: 10px; line-height: 1.8; }
 .site-footer { flex-wrap: wrap; }
 @media (max-width: 760px) {
+  .resource-footer > div:last-child,.blogs-footer > .footer-links,.pricing-footer > .footer-links { justify-content: flex-start; }
+  .resource-footer > .footer-identity,.blogs-footer > .footer-identity,.pricing-footer > .footer-identity { flex-basis: auto; }
   .site-footer > .footer-identity { order: 3; flex-basis: 100%; margin-left: 0; font-size: 9px; }
 }
