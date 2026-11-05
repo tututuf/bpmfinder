@@ -19,7 +19,8 @@ try {
   assert.equal(sitemapResponse.status(), 200);
   const sitemap = await sitemapResponse.text();
   const paths = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(m => new URL(m[1]).pathname);
-  assert.equal(paths.length, 17);
+  assert.equal(paths.length, 18);
+  assert.ok(paths.includes('/blogs/common-dj-mistakes'));
   assert.ok(paths.includes('/about') && paths.includes('/analysis-methodology'));
   assert.ok(!paths.some(p => /login|saved-results|billing/.test(p)));
   for (const path of paths) {
@@ -102,7 +103,7 @@ try {
   }
   await noJs.close();
   assert.deepEqual(report.errors, []);
-  report.checks.push('17 public routes: linked site/publisher/editorial schema, author attribution, public footer entries and canonical metadata', 'New pages at 375/390/768/1024/1440: no overflow, valid contents anchors and responsive sticky index', 'Article author → About → Methods preserves header and document; native audio playback/download and file hashes match', 'Original Google HTML verification file and public technical evidence remain accessible', 'Full About/Methods text remains in HTML with JavaScript disabled');
+  report.checks.push('18 public routes: linked site/publisher/editorial schema, author attribution, public footer entries and canonical metadata', 'New pages at 375/390/768/1024/1440: no overflow, valid contents anchors and responsive sticky index', 'Article author → About → Methods preserves header and document; native audio playback/download and file hashes match', 'Original Google HTML verification file and public technical evidence remain accessible', 'Full About/Methods text remains in HTML with JavaScript disabled');
 } finally {
   await writeFile(`${output}/report.json`, JSON.stringify(report, null, 2));
   await browser.close();

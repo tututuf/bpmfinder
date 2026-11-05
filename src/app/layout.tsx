@@ -24,10 +24,10 @@ import './legal-links.css';
 export const metadata: Metadata = {
   metadataBase: new URL(siteOrigin()),
   verification: process.env.GOOGLE_SITE_VERIFICATION ? { google: process.env.GOOGLE_SITE_VERIFICATION } : undefined,
-  title: 'BPM Finder — Find Song BPM & Musical Key Online, Free',
+  title: 'Find Song BPM & Musical Key Online, Free | BPM Finder',
   description: 'Find song BPM, musical key and Camelot with our free online BPM finder. Analyze audio files privately in your browser, tap tempo, and export CSV for free. Save results to your account with Pro.',
   robots: { index: true, follow: true },
-  openGraph: { title: 'BPM Finder — Find Song BPM & Musical Key Online, Free', description: 'Analyze the tempo and key of your audio files in your browser. Free BPM detection, Tap Tempo and a metronome. Your audio stays on your device.', type: 'website' },
+  openGraph: { title: 'Find Song BPM & Musical Key Online, Free | BPM Finder', description: 'Analyze the tempo and key of your audio files in your browser. Free BPM detection, Tap Tempo and a metronome. Your audio stays on your device.', type: 'website' },
 };
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return <html lang="en" data-scroll-behavior="smooth"><body><StructuredData value={siteIdentitySchema()} /><AuthProvider><SiteHeader /><SiteMotion>{children}</SiteMotion></AuthProvider>{process.env.NODE_ENV === 'production' && <GoogleAnalytics />}</body></html>;

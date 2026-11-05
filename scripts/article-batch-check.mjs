@@ -4,7 +4,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 
 const base = process.env.BASE_URL || 'http://127.0.0.1:3000';
-const routes = ['fast-and-slow-tempo','average-song-tempo','key-notation','dj-beatmatching','timing-in-music','musical-key-and-scale'];
+const routes = ['fast-and-slow-tempo','average-song-tempo','key-notation','dj-beatmatching','timing-in-music','musical-key-and-scale','common-dj-mistakes'];
 const output = process.env.CHECK_OUTPUT || 'artifacts/article-batch';
 await mkdir(output,{recursive:true});
 const browser = await chromium.launch({executablePath:process.env.CHROME_PATH || 'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});
@@ -22,8 +22,20 @@ try {
     assert.equal(response.status(),200);
     assert.equal(await page.locator('h1').count(),1);
     assert.equal(await page.locator('#sources-heading').innerText(),'Sources');
-    assert.equal(await page.locator('a[href$="verification.txt"]').count(),0);
-    assert.doesNotMatch(await page.locator('main').innerText(), /benchmark|file hashes|reproduction notes|tested dose|ORIGINAL LISTENING EXAMPLE/);
+    if (slug !== 'common-dj-mistakes') {
+      assert.equal(await page.locator('a[href$="verification.txt"]').count(),0);
+      assert.doesNotMatch(await page.locator('main').innerText(), /benchmark|file hashes|reproduction notes|tested dose|ORIGINAL LISTENING EXAMPLE/);
+    } else {
+      assert.equal(await page.locator('audio').count(),3);
+      assert.equal(await page.locator('.article-section > h2').filter({hasText:/^\d+\./}).count(),10);
+      assert.match(await page.locator('#how-prepared').innerText(), /AI assistance/);
+      assert.match(await page.locator('#how-prepared').innerText(), /No professional DJ review/);
+      for (const evidence of ['dj-mistakes-evidence.json','verify-dj-mistakes.mjs']) {
+        const response = await page.request.get(base + '/audio/field-notes/' + evidence);
+        assert.equal(response.status(),200);
+        assert.equal(await response.text(),await readFile('public/audio/field-notes/' + evidence,'utf8'));
+      }
+    }
     const title = await page.title(); assert.ok(!titles.has(title)); titles.add(title);
     assert.equal(await page.locator('link[rel=canonical]').getAttribute('href'),'https://bpmfder.com'+path);
     assert.equal(await page.locator('meta[property="og:type"]').getAttribute('content'),'article');
@@ -31,7 +43,7 @@ try {
     assert.deepEqual(missing,[]);
     const schema = await page.locator('script[type="application/ld+json"]').evaluateAll(scripts=>scripts.map(s=>JSON.parse(s.textContent)).find(s=>s['@type']==='BlogPosting'));
     assert.equal(schema.mainEntityOfPage,'https://bpmfder.com'+path);
-    const published=['timing-in-music','musical-key-and-scale'].includes(slug)?'2026-11-01':'2026-10-31';
+    const published=slug==='common-dj-mistakes'?'2026-11-06':['timing-in-music','musical-key-and-scale'].includes(slug)?'2026-11-01':'2026-10-31';
     assert.equal(schema.datePublished,published);
     assert.equal(await page.locator('.article-byline time').getAttribute('datetime'),published);
     assert.equal(schema.citation.length,await page.locator('.article-sources li').count());
@@ -39,7 +51,7 @@ try {
       assert.equal(await page.locator(`#source-${i+1} a`).getAttribute('href'),source.url);
       assert.ok(await page.locator(`.article-citation a[href="#source-${i+1}"]`).count()>0,`Source ${i+1} is actually cited`);
     }
-    assert.equal(await page.locator('.field-related a').count(),6);
+    assert.equal(await page.locator('.field-related a').count(),7);
     const firstCitation=page.locator('.article-citation a').first();
     const sourceTarget=await firstCitation.getAttribute('href');
     await firstCitation.click();
@@ -56,7 +68,11 @@ try {
       assert.deepEqual(overflow,[],`${slug}: tables/figures/audio fit at ${width}`);
       if(width===1440||width===375){
         await page.screenshot({path:`${output}/${slug}-${width}.png`});
-        await page.locator('.field-figure').first().screenshot({path:`${output}/${slug}-figure-${width}.png`});
+        if (await page.locator('.field-figure').count()) await page.locator('.field-figure').first().screenshot({path:`${output}/${slug}-figure-${width}.png`});
+        if (slug === 'common-dj-mistakes') {
+          await page.locator('.field-table-wrap').screenshot({path:`${output}/${slug}-table-${width}.png`});
+          await page.locator('#how-prepared').screenshot({path:`${output}/${slug}-method-${width}.png`});
+        }
       }
     }
     await page.setViewportSize({width:1440,height:1000});
@@ -73,7 +89,7 @@ try {
     await page.locator('.article-contents a').last().click();
     await page.waitForFunction(()=>document.querySelector('.article-sidebar-contents a[aria-current="location"]')?.getAttribute('href')==='#sources');
     const count=await page.locator('audio').count();
-    assert.equal(count,['fast-and-slow-tempo','dj-beatmatching','timing-in-music','musical-key-and-scale'].includes(slug)?3:0);
+    assert.equal(count,['fast-and-slow-tempo','dj-beatmatching','timing-in-music','musical-key-and-scale','common-dj-mistakes'].includes(slug)?3:0);
     assert.equal(requests.slice(requestStart).filter(url=>/\/audio\/(field-notes|timing-scale)\/.*\.wav/.test(url)).length,0,'No audio downloaded before playback');
     for(const audio of await page.locator('audio').all()){
       assert.equal(await audio.getAttribute('preload'),'none');
@@ -128,7 +144,7 @@ try {
   assert.equal(await page.evaluate(()=>window.savedHeader===document.querySelector('.site-header')&&window.savedDocument===document),true);
   await page.getByRole('link',{name:'Blogs',exact:true}).first().click();
   await page.waitForURL('**/blogs');
-  assert.equal(await page.locator('.blog-notes-grid article').count(),6);
+  assert.equal(await page.locator('.blog-notes-grid article').count(),7);
   assert.equal(await page.getByRole('heading',{name:'Start with the homepage guides'}).count(),0);
   assert.equal(await page.locator('.blog-feature').count(),1);
   await page.screenshot({path:`${output}/blogs-1440.png`,fullPage:true});
@@ -141,9 +157,9 @@ try {
   }
   await nojs.close();
   const sitemap=await (await page.request.get(base+'/sitemap.xml')).text();
-  assert.equal([...sitemap.matchAll(/<loc>/g)].length,17);
+  assert.equal([...sitemap.matchAll(/<loc>/g)].length,18);
   for(const slug of routes)assert.ok(sitemap.includes('https://bpmfder.com/blogs/'+slug));
   assert.deepEqual(report.errors,[]);
-  report.checks.push('Unique canonical/metadata/BlogPosting, correct per-post publication dates and inline-to-bibliography evidence mapping','Four widths: centered body, no figure/table/player overflow; desktop outside-margin sticky contents and active source link','All twelve audio assets have matching SHA256 and format/duration; native playback/no preload and actual WAV downloads work','New metronome screenshot opens a dialog and closes with Escape; eight-bar schedule and three scale rows remain in HTML','Persistent-header same-document new/old article navigation, seven blog entries, seventeen public sitemap URLs; removed homepage-guides section stays absent','Full article text, inline contents, diagrams and sources remain available with JavaScript disabled');
+  report.checks.push('Unique canonical/metadata/BlogPosting, correct per-post publication dates and inline-to-bibliography evidence mapping','Four widths: centered body, no figure/table/player overflow; desktop outside-margin sticky contents and active source link','All twelve audio assets have matching SHA256 and format/duration; native playback/no preload and actual WAV downloads work','New metronome screenshot opens a dialog and closes with Escape; eight-bar schedule and three scale rows remain in HTML','Persistent-header same-document new/old article navigation, eight blog entries, eighteen public sitemap URLs; removed homepage-guides section stays absent','Full article text, inline contents, diagrams and sources remain available with JavaScript disabled','DJ mistakes: ten numbered fixes, AI process disclosure, nine cited sources, public measurement data and reproduction script');
   await writeFile(output+'/report.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));
 }finally{await browser.close();}
